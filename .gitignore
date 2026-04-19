@@ -19,3 +19,6 @@ desktop.ini
 # Editor scratch
 *.swp
 *~
+
+# Workshop upload artifacts
+publish/_workshop_generated.vdf
