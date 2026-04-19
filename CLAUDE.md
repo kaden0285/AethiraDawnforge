@@ -6,12 +6,12 @@ A RimWorld mod adding the **Kurin Demigodess** xenotype, centered on **Aethira D
 
 ## Why this mod is unusual
 
-Aethira is meant to be **permanently indestructible**. Losing her breaks the player's playthrough, she is the entire point of the mod. This is why there are 28 Harmony patches and a seven-layer failsafe chain. When something can silently go wrong, she dies forever.
+Aethira is meant to be **permanently indestructible**. Losing her breaks the player's playthrough, she is the entire point of the mod. This is why there are 34 Harmony patches and a seven-layer failsafe chain. When something can silently go wrong, she dies forever.
 
 ## Key files
 
 ### Mod infrastructure
-- `Source/KurinDemigodess/KurinDemigodessSettings.cs` - `KurinDemigodessMod` (Verse.Mod subclass) hosts the settings menu AND applies all Harmony patches in its constructor. Static accessor: `KurinDemigodessMod.Settings.failsafeScanInterval` etc. **Always grep the RimWorld log for `[KurinDemigodess] Harmony patches applied.` first when debugging; if missing, the DLL didn't load.** Expected count: 28 succeeded, 0 failed.
+- `Source/KurinDemigodess/KurinDemigodessSettings.cs` - `KurinDemigodessMod` (Verse.Mod subclass) hosts the settings menu AND applies all Harmony patches in its constructor. Static accessor: `KurinDemigodessMod.Settings.failsafeScanInterval` etc. **Always grep the RimWorld log for `[KurinDemigodess] Harmony patches applied.` first when debugging; if missing, the DLL didn't load.** Expected count: 34 succeeded, 0 failed. (PerspectiveShiftCompat has a silent try/catch and does NOT increment the success counter, so it is not included in the 34.)
 - `Source/KurinDemigodess/Mod.cs` - intentionally empty (comment-only). Old `[StaticConstructorOnStartup]` class was removed when Harmony init moved to the Mod subclass.
 - `Source/KurinDemigodess/Kurin_DefOf.cs` - `[DefOf]` class with every custom `DG_*` def reference.
 - `Source/KurinDemigodess/DemigodessHealing.cs` - static helpers: `PurgeHarmfulStatusEffects`, `PurgeInjuriesAndBloodLoss`, `PurgeResurrectionLeftovers`, `PurgeDiseases`, `RemovePsylink`, `FullPurge`. Single source of truth for all hediff purging.
@@ -54,7 +54,7 @@ Aethira is meant to be **permanently indestructible**. Losing her breaks the pla
 - `Source/KurinDemigodess/DebugActions_Demigodess.cs` - `[DebugAction]` class, category "Kurin Demigodess". Dump state, find Aethira, reset miss counter, force respawn, force kill, trigger ascension, death-recoil pulse, grant favor, invoke blessing, force pilgrimage.
 
 ### Harmony patches list
-Currently **28 patches** applied in `KurinDemigodessMod.ApplyHarmonyPatches`: DamageCap, Deathless, AntiKidnap, AntiMentalBreak, AntiMentalBreaker, AntiFactionChange, AntiSell, CertaintyLock, AntiPsylink, 6x CorpseProtection (Destroy/Damage/DeSpawn/Prey/Food/Haul), RoofCollapse, MapProtection, WorldPawnGC, WorldPawnsPass, WorldPawnsRemove, PawnDiscard, CaravanCapacity, AntiPsycast_Helper, AethiraGizmos, GuestFavor, AntiGeneTransfer, plus manual DiseaseImmunity and AntiBanish patches.
+Currently **34 patches** applied in `KurinDemigodessMod.ApplyHarmonyPatches` (31 TryPatch calls + 3 manual Apply calls that increment `success`): DamageCap, Deathless, AntiKidnap, AntiMentalBreak, AntiMentalBreaker, AntiFactionChange, AntiSell, CertaintyLock, AntiPsylink, 6x CorpseProtection (Destroy/Damage/DeSpawn/Prey/Food/Haul), RoofCollapse, MapProtection, WorldPawnGC, WorldPawnsPass, WorldPawnsRemove, PawnDiscard, CaravanCapacity, AntiPsycast_Helper, AethiraGizmos, GuestFavor, AntiGeneTransfer, AntiWeaponDrop, KurinNoBeard, 3x InventoryPreservation (Rot_CompTick, Rot_CompTickRare, Deterioration), plus manual TerrainSpeedImmunity, DiseaseImmunity, and AntiBanish patches. `PerspectiveShiftCompat_Patch` also runs but is optional compat that silently no-ops when Perspective Shift isn't installed, and does NOT increment the success counter.
 
 ## Lessons learned (do not relearn)
 
