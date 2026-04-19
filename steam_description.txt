@@ -126,6 +126,9 @@ Her presence is a pressure upon the world. She is the antithesis of a psycaster.
 [*] All Kurins cannot have facial hair
 [/list]
 
+[h2]Starting a Game[/h2]
+Use either included scenario (Primitive or Tribal) for the intended narrative experience. If you add this mod to an existing save, or start a fresh colony without picking the scenario, the failsafe catches the gap within a minute and Aethira walks out of the wilderness with a "Divine Arrival" letter. Both paths are fully supported - no 7-day ascension wait, no missing pawn.
+
 [h2]Dependencies[/h2]
 
 [b]Required:[/b]

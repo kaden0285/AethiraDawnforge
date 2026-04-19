@@ -27,6 +27,11 @@ namespace KurinDemigodess
         private bool firstScanLogged;
         private string worldUuid; // Per-save UUID for isolating the on-disk snapshot file (Layer 7)
         private int ticksSinceLastSnapshot; // Throttle for disk-snapshot writes
+        // Set to true the first scan where we find Aethira. Determines whether the
+        // failsafe's recovery path is an ascension (she was here, we lost her) or a
+        // gentle welcome spawn (she has never been here - player joined without the
+        // scenario, mod added mid-save, etc).
+        private bool hasEverHadDemigodess;
 
         public WorldComponent_DemigodessTracker(World world) : base(world)
         {
@@ -342,6 +347,7 @@ namespace KurinDemigodess
             if (best != null)
             {
                 savedDemigodess = best;
+                hasEverHadDemigodess = true;
             }
 
             if (inv.livingSpawned.Count > 1)
@@ -654,6 +660,17 @@ namespace KurinDemigodess
                 return;
             }
 
+            // Never-had-her case: player joined without the Aethira scenario, or the
+            // mod was added mid-save. Don't route her through ascension, that would
+            // start a 7-day "her body dissolves" loop for a pawn that never existed.
+            // Spawn her directly on the home map with a gentle arrival letter.
+            if (!hasEverHadDemigodess && (savedDemigodess == null || savedDemigodess.Destroyed))
+            {
+                LogFailsafe("Emergency respawn: never had Aethira in this save - routing to WelcomeSpawn.");
+                WelcomeSpawn(homeMap);
+                return;
+            }
+
             try
             {
                 Pawn pawn = null;
@@ -726,6 +743,87 @@ namespace KurinDemigodess
             {
                 Log.Error(string.Format("[KurinDemigodess] Emergency respawn error: {0}", ex));
                 LogFailsafe(string.Format("EmergencyRespawn threw exception: {0}", ex.Message));
+            }
+        }
+
+        // ============================================================
+        // WELCOME SPAWN (never-existed-in-this-save case)
+        // ============================================================
+
+        /// <summary>
+        /// Spawns a fresh Aethira directly onto the home map with a gentle arrival
+        /// letter. Used when the failsafe fires on a save where she has never been
+        /// present (player skipped the scenario, mod added mid-save, etc).
+        /// Without this path, such saves would get stuck in a 7-day ascension loop
+        /// because EmergencyRespawn always routed through BeginAscension.
+        /// </summary>
+        private void WelcomeSpawn(Map homeMap)
+        {
+            if (homeMap == null) return;
+
+            try
+            {
+                if (Kurin_DefOf.DG_KurinDemigodess_Kind == null)
+                {
+                    Log.Error("[KurinDemigodess] WelcomeSpawn failed: PawnKindDef not found");
+                    LogFailsafe("WelcomeSpawn FAILED: PawnKindDef DG_KurinDemigodess_Kind not found.");
+                    return;
+                }
+
+                var pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(
+                    Kurin_DefOf.DG_KurinDemigodess_Kind,
+                    Faction.OfPlayer,
+                    PawnGenerationContext.NonPlayer,
+                    forceGenerateNewPawn: true));
+
+                if (pawn == null)
+                {
+                    Log.Error("[KurinDemigodess] WelcomeSpawn failed: PawnGenerator returned null");
+                    LogFailsafe("WelcomeSpawn FAILED: PawnGenerator returned null.");
+                    return;
+                }
+
+                // Defensive: overlay any on-disk snapshot that happens to exist.
+                DemigodessSnapshot.LoadAndApply(pawn, worldUuid, false);
+
+                if (pawn.Faction == null || !pawn.Faction.IsPlayer)
+                {
+                    pawn.SetFaction(Faction.OfPlayer);
+                }
+
+                IntVec3 spawnPos = FindShrinePosition(homeMap);
+                if (!spawnPos.IsValid)
+                {
+                    spawnPos = CellFinder.RandomEdgeCell(homeMap);
+                }
+
+                GenSpawn.Spawn(pawn, spawnPos, homeMap);
+
+                if (Kurin_DefOf.DG_DemigodessPresence != null
+                    && !pawn.health.hediffSet.HasHediff(Kurin_DefOf.DG_DemigodessPresence))
+                {
+                    pawn.health.AddHediff(Kurin_DefOf.DG_DemigodessPresence);
+                }
+
+                MaxAllNeeds(pawn);
+
+                // Register as the canonical Aethira so the failsafe stops firing.
+                savedDemigodess = pawn;
+                hasEverHadDemigodess = true;
+                consecutiveMissCount = 0;
+
+                Find.LetterStack.ReceiveLetter(
+                    "A Divine Arrival",
+                    "A Kurin with snow-white hair and jade-green eyes walks out of the wilderness and into the colony without warning. She introduces herself as Aethira Dawnforge. The air grows still where she stands, and the wounded feel their pain ebb before she has even reached them. She says she has walked this long road many times before, and asks to stay.",
+                    LetterDefOf.PositiveEvent, pawn);
+
+                Log.Message("[KurinDemigodess] WelcomeSpawn: Aethira spawned onto home map (never existed in this save).");
+                LogFailsafe("WelcomeSpawn: Aethira spawned directly onto home map - never-had case handled.");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(string.Format("[KurinDemigodess] WelcomeSpawn error: {0}", ex));
+                LogFailsafe(string.Format("WelcomeSpawn threw exception: {0}", ex.Message));
             }
         }
 
@@ -939,6 +1037,7 @@ namespace KurinDemigodess
             Scribe_Values.Look(ref consecutiveMissCount, "consecutiveMissCount", 0);
             Scribe_Values.Look(ref worldUuid, "worldUuid", null);
             Scribe_Values.Look(ref ticksSinceLastSnapshot, "ticksSinceLastSnapshot", 0);
+            Scribe_Values.Look(ref hasEverHadDemigodess, "hasEverHadDemigodess", false);
 
             // Layer 7: always write a fresh snapshot on the main game save, so the
             // disk backup is guaranteed up-to-date relative to the save file.
