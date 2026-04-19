@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== Divine Will (permanent +20 mood for Demigodess) ==================== -->
+  <ThoughtDef>
+    <defName>DG_DivineWill</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>KurinDemigodess.ThoughtWorker_DivineWill</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>divine will</label>
+        <description>I am a goddess. My purpose is clear, my resolve unshakable.</description>
+        <baseMoodEffect>20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== Demigodess Calmed Me ==================== -->
+  <ThoughtDef>
+    <defName>DG_DemigodessCalmedMe</defName>
+    <durationDays>3</durationDays>
+    <stages>
+      <li>
+        <label>the Demigodess calmed me</label>
+        <description>The Demigodess reached out to me when I was at my lowest. Her presence washed over me like warm light. I feel whole again.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== Leadership Aura Thought ==================== -->
+  <ThoughtDef>
+    <defName>DG_DivineMorale</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>KurinDemigodess.ThoughtWorker_DivineMorale</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>divine presence nearby</label>
+        <description>The Demigodess is near. Her radiance fills me with hope and courage.</description>
+        <baseMoodEffect>18</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== Demigodess Fallen Colony Thought ==================== -->
+  <ThoughtDef>
+    <defName>DG_DemigodessRests</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>KurinDemigodess.ThoughtWorker_DemigodessRests</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>the Demigodess rests</label>
+        <description>The Demigodess is recovering. We know she will return, but without her auras we feel vulnerable.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== Divine Ascension - She's Gone ==================== -->
+  <ThoughtDef>
+    <defName>DG_DemigodessHasFallen</defName>
+    <durationDays>7</durationDays>
+    <stages>
+      <li>
+        <label>the Demigodess is recovering</label>
+        <description>Our goddess is down. She will return, she always does. But until then, we are unprotected. I feel exposed without her presence.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== Divine Return ==================== -->
+  <ThoughtDef>
+    <defName>DG_DemigodessReturns</defName>
+    <durationDays>5</durationDays>
+    <stages>
+      <li>
+        <label>the Demigodess returns!</label>
+        <description>She has returned from beyond! The goddess walks among us once more. Joy and wonder fill my heart!</description>
+        <baseMoodEffect>30</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== Ideology: Demigodess Nearby (for believers) ==================== -->
+  <ThoughtDef>
+    <defName>DG_DemigodessNearby_Ideo</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>KurinDemigodess.ThoughtWorker_DemigodessNearbyIdeo</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>our goddess walks among us</label>
+        <description>The Demigodess graces our colony with her divine presence. I am truly blessed to serve her.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== Ideology: Demigodess Harmed ==================== -->
+  <ThoughtDef>
+    <defName>DG_DemigodessHarmed_Ideo</defName>
+    <durationDays>3</durationDays>
+    <stages>
+      <li>
+        <label>the goddess bleeds</label>
+        <description>Someone dared to harm our Demigodess. This is an affront to everything we hold sacred.</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

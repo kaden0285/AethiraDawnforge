@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MemeDef>
+    <defName>DG_DemigodessWorship</defName>
+    <label>demigodess worship</label>
+    <description>We revere the Kurin Demigodess - the first of our kind, the last living memory of the Republic, the one who cannot be unmade. Her presence brings us strength, her absence brings us grief, and the laws she carries are older than any of us. Slavery is an abomination. Charity is sacred. The innocent shall not be harmed under her watch. Anyone who raises a hand against her raises a hand against every Kurin who ever lived.</description>
+    <iconPath>UI/Icons/Genes/Gene_Deathless</iconPath>
+    <groupDef>Misc</groupDef>
+    <impact>2</impact>
+    <renderOrder>200</renderOrder>
+    <requireOne>
+      <!-- Must revere the Demigodess -->
+      <li>
+        <li>DG_DemigodessProtection_Revered</li>
+      </li>
+      <!-- Must hate slavery -->
+      <li>
+        <li>Slavery_Abhorrent</li>
+        <li>Slavery_Horrible</li>
+      </li>
+      <!-- Must value charity -->
+      <li>
+        <li>Charity_Essential</li>
+        <li>Charity_Important</li>
+      </li>
+      <!-- Must oppose organ harvesting -->
+      <li>
+        <li>OrganUse_Abhorrent</li>
+        <li>OrganUse_HorribleNoSell</li>
+      </li>
+      <!-- Must oppose killing innocents without cause -->
+      <li>
+        <li>Execution_Abhorrent</li>
+        <li>Execution_Horrible</li>
+        <li>Execution_HorribleIfInnocent</li>
+      </li>
+    </requireOne>
+    <generalRules>
+      <rulesStrings>
+        <li>memeCreed->[divine] [guardianNoun]hood</li>
+        <li>memeCreed->The [divine] Path</li>
+        <li>memeCreed->The [guardianNoun]'s Way</li>
+        <li>memeCreed->The Celestial Order</li>
+        <li>memeCreed->The Divine Covenant</li>
+        <li>memeLeaderTitle->Demigodess</li>
+        <li>memeLeaderTitle->Divine Guardian</li>
+        <li>memeLeaderTitle->Celestial Protector</li>
+        <li>memeMoralist->Divine Herald</li>
+        <li>memeMoralist->Sacred Voice</li>
+        <li>divine->Sacred</li>
+        <li>divine->Divine</li>
+        <li>divine->Celestial</li>
+        <li>divine->Blessed</li>
+        <li>divine->Holy</li>
+        <li>guardianNoun->Guardian</li>
+        <li>guardianNoun->Protector</li>
+        <li>guardianNoun->Goddess</li>
+        <li>guardianNoun->Sentinel</li>
+        <li>guardianNoun->Shepherd</li>
+      </rulesStrings>
+    </generalRules>
+    <descriptionMaker>
+      <rules>
+        <rulesStrings>
+          <li>creation_myth->A meteor of concentrated arcites was found near a black hole and brought to Aolara. The lead AI used it to create the first sentient Kurin. She became the protector the AIs always wanted for their creation. She brought with her the sacred law: no soul shall be enslaved, no innocent harmed without cause, and all who need shall be given aid.</li>
+          <li>creation_myth->She was the first. Created from arcites pulled from the edge of a black hole, she was the prototype that proved Kurin could be more than dolls. Every Kurin alive today owes their sentience to her. When Aolara fell, she was on the last ship out.</li>
+          <li>creation_myth->The AIs felt sorry for what humans had done to the Kurin. So when they found the arcite meteor, they used it to create a guardian. One who could never be killed, the oldest Kurin still alive, who would protect her people forever. She walks among us still.</li>
+          <li>episode_intro->Once, the Demigodess [episode_actionVerb] a great evil that threatened the faithful.</li>
+          <li>episode_intro->When slavers came to take the weak, the Demigodess [episode_actionVerb] them with divine fury.</li>
+          <li>episode_actionVerb->vanquished</li>
+          <li>episode_actionVerb->smote</li>
+          <li>episode_actionVerb->banished</li>
+          <li>episode_actionVerb->destroyed</li>
+        </rulesStrings>
+      </rules>
+    </descriptionMaker>
+  </MemeDef>
+
+</Defs>

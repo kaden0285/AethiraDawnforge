@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <PawnKindDef>
+    <defName>DG_KurinDemigodess_Kind</defName>
+    <label>kurin demigodess</label>
+    <race>Kurin_Race</race>
+    <defaultFactionType>PlayerColony</defaultFactionType>
+    <chemicalAddictionChance>0</chemicalAddictionChance>
+    <minGenerationAge>200</minGenerationAge>
+    <maxGenerationAge>1000</maxGenerationAge>
+    <backstoryFiltersOverride>
+      <li>
+        <categories>
+          <li>Kurin_Elite</li>
+          <li>Kurin_EliteSoldier</li>
+        </categories>
+      </li>
+    </backstoryFiltersOverride>
+    <xenotypeSet>
+      <xenotypeChances>
+        <DG_KurinDemigodess>999</DG_KurinDemigodess>
+      </xenotypeChances>
+    </xenotypeSet>
+    <useFactionXenotypes>false</useFactionXenotypes>
+  </PawnKindDef>
+
+</Defs>

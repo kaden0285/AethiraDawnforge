@@ -1,0 +1,21 @@
+# Build intermediates
+Source/KurinDemigodess/bin/
+Source/KurinDemigodess/obj/
+**/bin/
+**/obj/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor scratch
+*.swp
+*~

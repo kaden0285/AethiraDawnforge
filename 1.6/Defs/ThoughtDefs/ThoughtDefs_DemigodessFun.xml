@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>DG_GuidedByDemigodess</defName>
+    <durationDays>1.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>guided by Aethira</label>
+        <description>Aethira Dawnforge spoke with me today. Her words steadied my soul.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>DG_BlessedByDemigodess</defName>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>blessed by Aethira</label>
+        <description>Aethira Dawnforge laid her hand upon me and whispered ancient words. I feel stronger, calmer, more certain of my place in the world.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>DG_DayOfRemembrance</defName>
+    <durationDays>1.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>Day of Remembrance</label>
+        <description>Today we remember all that Aethira has done for our people. Her protection is eternal, her love boundless.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>DG_AethiraAscending</defName>
+    <durationDays>2.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>witnessed divine ascension</label>
+        <description>I saw Aethira's body dissolve into a shockwave of divine light as she ascended beyond the mortal plane. The memory fills me with awe.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

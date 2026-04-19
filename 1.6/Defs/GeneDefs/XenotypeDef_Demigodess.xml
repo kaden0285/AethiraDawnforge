@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <XenotypeDef>
+    <defName>DG_KurinDemigodess</defName>
+    <label>Kurin Demigodess</label>
+    <description>Wrought from the last sparks of Aolara's dying sun, Aethira Dawnforge is the first true Kurin - ageless, immortal, and sworn to watch over her people forever. She does not tire. She does not grieve the dead. She does not flee.\n\nHer mere presence heals wounds and calms broken minds within seventy tiles. Nearby allies learn faster, hunger less, and fight with divine precision; enemies in her shadow tremble and falter. When she falls, a shockwave of divine fire lashes out at her killers and her body begins to remake itself - she will rise again, always. Slain far from home, divine will carries her back. Her corpse consumed, she returns in seven days regardless.\n\nHer Divine Favor accumulates as she watches over the colony, to be spent on blessings for her people. Her protection dispels toxic fallout, volcanic winter, heat wave, and flashstorm alike. Kurin pilgrims travel the rim to glimpse her, bearing offerings of silver and medicine.\n\nShe is the colony's goddess. She does not ask to be worshipped - only to be worthy of her protection.</description>
+    <descriptionShort>The first and eldest Kurin. Immortal, untiring, and bound to her people by an unbreakable vow.</descriptionShort>
+    <iconPath>UI/Icons/Genes/Gene_Deathless</iconPath>
+    <displayPriority>500</displayPriority>
+    <combatPowerFactor>2.5</combatPowerFactor>
+    <inheritable>false</inheritable>
+    <genes>
+      <!-- Baseline cosmetic/body genes -->
+      <li>DG_HairSnowWhite</li>
+      <li>Body_Standard</li>
+      <li>Hands_Human</li>
+      <li>Voice_Human</li>
+      <li>Beard_NoBeardOnly</li>
+<li>Beauty_Beautiful</li>
+      <!-- The 5 Divine genes -->
+      <li>DG_DivineConstitution</li>
+      <li>DG_DivineVitality</li>
+      <li>DG_DivineGrace</li>
+      <li>DG_DivinePresence</li>
+    </genes>
+  </XenotypeDef>
+
+</Defs>

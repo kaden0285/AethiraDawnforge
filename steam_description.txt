@@ -1,0 +1,167 @@
+[h1]Kurin, The Celestial Fox - Aethira Dawnforge[/h1]
+
+A fork of Kurin HAR Edition centered on [b]Aethira Dawnforge[/b], an immortal Kurin Demigodess. She is not a warrior. She is an eternal leader, healer, and protector who cannot be killed, lost, or removed by any means.
+
+[b][url=https://YOUR-USERNAME.github.io/KurinDemigodess/]Full documentation website[/url][/b] - lore, every mechanic, every gene, every failsafe, settings, compatibility. The Steam page covers highlights; the website covers everything.
+
+[h2]Who Is Aethira?[/h2]
+
+When a meteor of concentrated archites was recovered near a black hole and brought to the glitterworld of Aolara, the lead bioengineering AI used it to create the very first sentient Kurin. All other Kurin were simple designermates for the wealthy. This one was different. The archites in her blood gave her the [b]divine spark[/b]: true sentience, self-healing, and immortality. She was the prototype, the first Kurin the AIs took pity on, and the reason all others eventually gained their minds.
+
+She stood at the founding of the Republic of Kurin. She watched it thrive for two centuries. She was there in 5445 when the siege began, when one million of her people became less than ten thousand. She died in that siege more than once. She always came back. When the survivors stole their ships and fled to the stars, Aethira was on the last ship out, carrying the wounded in her arms.
+
+Now, centuries later on a forgotten rimworld, she starts again. She does not fight with supernatural strength. Her power is in her [b]presence[/b]. Those who stand near her feel no fear, heal from their wounds, and fight beyond their limits. Those who oppose her feel only dread.
+
+[h2]The Four Auras[/h2]
+
+All four auras share a 50-tile base radius that scales linearly up to 100 tiles as her Divine Favor fills.
+
+[list]
+[*] [b]Leadership[/b]: allies gain +18 mood, +45% melee damage, +9 dodge and hit, +5 shooting, +75% learning, half hunger rate
+[*] [b]Healing[/b]: closes wounds, cures disease, auto-tends, removes scars, regrows limbs, reduces blood loss. Heal rate scales with favor.
+[*] [b]Calming Presence[/b]: ends mental breaks on nearby colonists, grants Catharsis
+[*] [b]Intimidation[/b]: enemies take penalties to hit, dodge, shooting accuracy, and consciousness
+[/list]
+
+[h2]Immortality and Protection[/h2]
+[list]
+[*] Regenerates injuries constantly and regrows missing body parts over hours
+[*] Any single blow deals at most 25% of her max HP, so nothing one-shots her
+[*] Immune to all diseases, toxins, chemicals, addictions, food poisoning, and age-related conditions
+[*] Cannot starve, freeze, overheat, or be mentally broken
+[*] Corpse is indestructible. Fire, explosions, mountain collapse, predators, nothing can destroy it.
+[*] On-map death: body regenerates, resurrects when brain and heart are whole. Needs maxed on wake.
+[*] Off-map death: divine will teleports her body home, 7-day recovery coma.
+[*] Body destroyed entirely: Divine Ascension brings her back in 7 days. Bottom-right alert shows the countdown.
+[*] On death, her divine essence lashes outward in a scouring AoE that burns and stuns every hostile nearby
+[*] Divine genes cannot be transferred. Gene Siphon, Gene Assembler, and dev-mode copies are all rejected.
+[*] Cannot be kidnapped, banished, sold, traded, or removed from the colony
+[*] Rescued from map destruction and mountain collapse automatically
+[*] Seven independent failsafe layers plus a per-save on-disk snapshot of her mind-state
+[/list]
+
+[h2]Divine Favor[/h2]
+
+A resource capped at 100 that accumulates from multiple sources:
+[list]
+[*] +5 per in-game day passively (+10 at 50%+ average colony mood)
+[*] +20 per Kurin pilgrimage arrival
+[*] +30 per Day of Remembrance (annual)
+[*] +3 per Aethira's Guidance event
+[*] +2 per friendly visitor that leaves alive
+[*] +1 per hostile kill on her map (capped at 20 raw kills per day)
+[/list]
+Favor scales every aura's range AND the healing aura's rate from 1x (empty) to 2x (full). A full bar doubles her area of influence and doubles her healing rate. All favor gain is doubled while a Divine Shrine is on a home map.
+
+[h2]Command-Bar Abilities[/h2]
+[list]
+[*] [b]Divine Blessing[/b] (100 favor, the full bar): fully restores every colonist on the map. Heals all injuries, cures all diseases, removes every status effect, maxes food/rest/joy/mood.
+[*] [b]Bless Colonist[/b] (10 favor): target a colonist to grant them a portable copy of Aethira's aura for 1.5 days (3 days with shrine). +50% work speed, constant healing, auto-tend, scar removal, limb regrowth, half hunger. Works across maps, in caravans, even during her own ascension.
+[/list]
+
+[h2]The Divine Shrine[/h2]
+
+1500 gold, 2 industrial components, 150 stone blocks. Requires Complex Furniture research. While one is on a home map:
+[list]
+[*] Aethira's ascension time is halved (7 days to 3.5 days)
+[*] Bless Colonist duration is doubled (1.5 days to 3 days)
+[*] All Divine Favor gain is doubled
+[*] Her ascension return materializes at the shrine
+[*] Functions as an Artistic meditation focus
+[/list]
+
+[h2]Her Four Genes[/h2]
+
+[h3]Divine Constitution (Archite)[/h3]
+Body wrought of divine will. No disease takes root. No single blow may fell her.
+[list]
+[*] Cannot be felled by pain, any single blow capped at 25% max HP
+[*] Immune to all disease, toxin, chemical, addiction, and food poisoning
+[*] Does not hunger, freeze, or overheat
+[*] On death, a shockwave of divine burn damage bursts outward
+[*] Cannot be kidnapped, banished, sold, or carried off the map
+[/list]
+
+[h3]Divine Vitality (Archite)[/h3]
+She cannot truly die. Severed limbs regrow. Her body remembers its divine form and returns to it, hour by hour.
+[list]
+[*] Heals her own wounds constantly, alive or dead. Auto-tends.
+[*] Regrows lost limbs and organs sequentially over hours. Scars fade.
+[*] Ageless past 18. Chronological age climbs forever, body never changes.
+[*] Slain on home map: regenerates and resurrects.
+[*] Slain far from home: body teleported back, 7-day recovery coma.
+[*] Body destroyed entirely: returns from nothing in 7 days.
+[/list]
+
+[h3]Divine Grace[/h3]
+Five centuries of wisdom, grace of motion without end, and an immense divine pocket-space that bends weight itself.
+[list]
+[*] Learns 50% faster
+[*] Rests half as often as a mortal
+[*] [b]Divine pocket storage: carries 500 kg beyond the normal limit[/b], consistent on her person and in caravans
+[*] [b]Nothing rots or deteriorates while stored on her.[/b] Meat, corpses, fresh medicine all frozen in time.
+[*] Ignores terrain-induced slowdown. Mud, snow, marsh, shallow water cost her no more than dirt.
+[/list]
+
+[h3]Divine Presence (Archite)[/h3]
+Her presence is a pressure upon the world. She is the antithesis of a psycaster. Her power comes from a deeper well, and that same well drinks deep from psychic harm.
+[list]
+[*] Source of all four auras and the weather purge
+[*] Dispels toxic fallout, cold snap, heat wave, volcanic winter, flashstorm, noxious haze, psychic drone from home maps
+[*] +50% social impact, +50% negotiation, +10% trade prices, +80% conversion power for herself
+[*] [b]Cannot become a psycaster. +50% psychic vulnerability.[/b] The intentional trade for her auras. Psycasts are her counter.
+[*] Divine genes cannot be transferred, copied, or extracted
+[/list]
+
+[h2]Other Content[/h2]
+[list]
+[*] 2 custom backstories: Divine Fox Kit (childhood) + Kurin Demigodess (adulthood)
+[*] 2 custom traits: Demigodess Beauty + Eternal Wisdom
+[*] Ideology meme: Demigodess Worship (anti-slavery, pro-charity, morally just)
+[*] Preset ideology: The Dawnforge Covenant
+[*] 2 custom scenarios: The Celestial Fox (Primitive and Tribal)
+[*] Buildable Divine Shrine
+[*] Full Kurin HAR race included
+[*] Auto-enforced appearance: snow white hair, straight ears, jade green eyes (with Kurin Facial Animation installed)
+[*] All Kurins cannot have facial hair
+[/list]
+
+[h2]Dependencies[/h2]
+
+[b]Required:[/b]
+[list]
+[*] RimWorld 1.6
+[*] Harmony
+[*] Humanoid Alien Races
+[*] Biotech DLC
+[*] Ideology DLC
+[/list]
+
+[b]Optional (enhanced integration):[/b]
+[list]
+[*] [b]Kurin HAR Facial Animation[/b] - enables the forced jade green eye color on Aethira
+[*] [b][NL] Facial Animation[/b] - transitive dep of Kurin Facial Animation above
+[*] [b]Perspective Shift[/b] - fully compatible, no integration needed
+[/list]
+
+[h2][b]!!! IMPORTANT !!![/b][/h2]
+[b]This mod REPLACES the standard Kurin HAR Edition. You CANNOT have both installed at the same time or your game WILL crash. Unsubscribe from the original Kurin HAR before using this mod.[/b]
+
+The mod enforces that only one Aethira can exist. Any attempt to add her genes to another pawn via Gene Siphon, Gene Assembler, dev-mode, or any other means is rejected automatically, and the foreign vessel has the genes stripped on the next scan.
+
+[h2]Full Documentation[/h2]
+Everything above is the short version. The [url=https://YOUR-USERNAME.github.io/KurinDemigodess/]documentation website[/url] covers:
+[list]
+[*] Detailed lore and story
+[*] Every gene with every stat breakdown
+[*] The complete seven-layer failsafe chain with trigger conditions
+[*] All mod settings and their defaults
+[*] Full compatibility matrix
+[*] Troubleshooting guide
+[*] Debug actions and dev tools
+[*] Design principles
+[/list]
+
+[h2]Credits[/h2]
+Original Kurin HAR Edition by Seioch, MaroonToon, and Ninedaylongbow.
+Aethira Dawnforge by Kaden.

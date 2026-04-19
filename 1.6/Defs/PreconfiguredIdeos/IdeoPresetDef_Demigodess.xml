@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <IdeoPresetDef>
+    <defName>DG_DemigodessWorship_Preset</defName>
+    <label>demigodess worship</label>
+    <description>The faithful worship an immortal Kurin Demigodess as their living goddess and divine protector. Under her sacred law, slavery is an abomination, charity is a sacred duty, organ harvesting is forbidden, and the innocent shall not be executed without just cause.\n\nBelievers gain mood bonuses when their Demigodess is near. Her death brings despair, but she always returns.\n\nA morally just ideology built around devotion to an immortal guardian.</description>
+    <categoryDef>Strong</categoryDef>
+    <iconPath>UI/Icons/Genes/Gene_Deathless</iconPath>
+    <memes>
+      <li>Structure_Ideological</li>
+      <li>DG_DemigodessWorship</li>
+    </memes>
+  </IdeoPresetDef>
+
+</Defs>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== Cosmetic: Snow White Hair ==================== -->
+  <GeneDef>
+    <defName>DG_HairSnowWhite</defName>
+    <label>snow white hair</label>
+    <description>This Kurin's hair is a striking snow white, a mark of her divine nature.</description>
+    <iconPath>UI/Icons/Genes/Gene_GreylessHair</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <displayOrderInCategory>0</displayOrderInCategory>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <hairColorOverride>(255, 255, 255)</hairColorOverride>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== Gene 1: Divine Constitution (Defense/Survival) ==================== -->
+  <GeneDef>
+    <defName>DG_DivineConstitution</defName>
+    <label>divine constitution</label>
+    <labelShortAdj>divine-armored</labelShortAdj>
+    <description>Her body is wrought of divine will. No disease takes root in her. No poison lingers in her blood. No single blow may fell her. And when she does fall, the divine essence she has carried for five centuries erupts outward to scour the battlefield of those who dared strike her down.</description>
+    <iconPath>UI/Icons/Genes/Gene_TotalToxicityResistance</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <displayOrderInCategory>100</displayOrderInCategory>
+    <biostatCpx>3</biostatCpx>
+    <biostatMet>2</biostatMet>
+    <biostatArc>1</biostatArc>
+    <marketValueFactor>1.5</marketValueFactor>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <selectionWeight>0</selectionWeight>
+    <statOffsets>
+      <PainShockThreshold>99</PainShockThreshold>
+      <ToxicEnvironmentResistance>1.0</ToxicEnvironmentResistance>
+    </statOffsets>
+    <statFactors>
+      <ImmunityGainSpeed>3.0</ImmunityGainSpeed>
+    </statFactors>
+    <immuneToToxGasExposure>true</immuneToToxGasExposure>
+    <makeImmuneTo>
+      <li>Flu</li>
+      <li>Malaria</li>
+      <li>SleepingSickness</li>
+      <li>Plague</li>
+      <li>WoundInfection</li>
+      <li>LungRot</li>
+      <li>GutWorms</li>
+      <li>MuscleParasites</li>
+      <li>OrganDecay</li>
+    </makeImmuneTo>
+    <hediffGiversCannotGive>
+      <li>Carcinoma</li>
+      <li>HeartAttack</li>
+      <li>BadBack</li>
+      <li>Frail</li>
+      <li>Cataract</li>
+      <li>Dementia</li>
+      <li>Alzheimers</li>
+      <li>Asthma</li>
+      <li>HeartArteryBlockage</li>
+    </hediffGiversCannotGive>
+    <customEffectDescriptions>
+      <li>Cannot be felled by pain. Any single blow deals at most 25% of her max HP - even a perfect four-hit combo cannot finish her from full health.</li>
+      <li>No mortal may kidnap her, banish her, sell her, or carry her away.</li>
+      <li>Immune to all disease, toxin, chemical damage, addiction, and food poisoning.</li>
+      <li>Does not hunger, freeze, or overheat.</li>
+      <li>When slain, a shockwave of divine fire bursts outward, burning and stunning hostile pawns within ~12 tiles. Allies and neutrals are untouched.</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <!-- ==================== Gene 2: Divine Vitality (Healing/Immortality) ==================== -->
+  <GeneDef>
+    <defName>DG_DivineVitality</defName>
+    <label>divine vitality</label>
+    <labelShortAdj>immortal</labelShortAdj>
+    <description>She cannot truly die. Severed limbs regrow. Lethal wounds close. Her body remembers its divine form and returns to it, hour by hour. Slain on home ground she resurrects in place; slain far from it, divine will teleports her back and lays her in a coma of healing. When her body is utterly annihilated, she returns in seven days regardless. She has buried every colony that ever called her sister. This one will be no exception - but not before you have grown old together, time and time again.</description>
+    <iconPath>UI/Icons/Genes/Gene_Deathless</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <displayOrderInCategory>101</displayOrderInCategory>
+    <geneClass>KurinDemigodess.Gene_Demigodess</geneClass>
+    <biostatCpx>5</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <biostatArc>2</biostatArc>
+    <marketValueFactor>2.0</marketValueFactor>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <selectionWeight>0</selectionWeight>
+    <preventPermanentWounds>true</preventPermanentWounds>
+    <biologicalAgeTickFactorFromAgeCurve>
+      <points>
+        <li>(0, 1)</li>
+        <li>(18, 1)</li>
+        <li>(18.001, 0)</li>
+      </points>
+    </biologicalAgeTickFactorFromAgeCurve>
+    <customEffectDescriptions>
+      <li>Heals her own wounds constantly - alive or dead. Tends her own injuries automatically.</li>
+      <li>Regrows lost limbs and organs sequentially over hours. Scars fade.</li>
+      <li>Does not age past 18. Her chronological age climbs forever but her body never changes.</li>
+      <li>Slain on her home map: body regenerates, resurrects when brain and heart are whole.</li>
+      <li>Slain far from home: body teleported home, wakes from a 7-day recovery coma carrying her wounds.</li>
+      <li>Body destroyed, eaten, or her presence otherwise lost entirely: returns from nothing in 7 days.</li>
+      <li>She always comes back.</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <!-- ==================== Gene 3: Divine Grace (Movement/Combat) ==================== -->
+  <GeneDef>
+    <defName>DG_DivineGrace</defName>
+    <label>divine grace</label>
+    <labelShortAdj>graceful</labelShortAdj>
+    <description>Grace of motion without end. She needs little rest, five centuries of wisdom still flow through her mind, and her immense divine pocket-space bends weight itself. Divine favor gathers around her as she watches over her people, strengthening her auras and fueling powerful blessings.</description>
+    <iconPath>UI/Icons/Genes/Gene_WoundHealingRateSuperfast</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <displayOrderInCategory>102</displayOrderInCategory>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <marketValueFactor>1.25</marketValueFactor>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <selectionWeight>0</selectionWeight>
+    <statOffsets>
+      <CarryingCapacity>500</CarryingCapacity>
+    </statOffsets>
+    <statFactors>
+      <RestFallRateFactor>0.5</RestFallRateFactor>
+      <GlobalLearningFactor>1.5</GlobalLearningFactor>
+    </statFactors>
+    <customEffectDescriptions>
+      <li>Learns 50% faster. Rests half as often as a mortal.</li>
+      <li>Divine pocket storage: carries 500 kg extra, in caravan and on person. Nothing rots or deteriorates while stored on her.</li>
+      <li>Accumulates Divine Favor from 6 sources: daily passive (+5, or +10 with high colony mood), pilgrimages (+20), Day of Remembrance (+30), Guidance events (+3), friendly visitor departures (+2), hostile kills on her map (+1, cap 20/day). Max 100. Shrine doubles all gain.</li>
+      <li>Favor scales all aura ranges and heal rate from 1x (empty) to 2x (full).</li>
+      <li>Divine Blessing gizmo (100 favor): fully restores every colonist on the map - heals all injuries, diseases, and status effects, maxes all needs.</li>
+      <li>Bless Colonist gizmo (10 favor): grants a portable copy of all aura effects for 1.5 days (3 with shrine), plus +50% work speed. Works across maps and caravans, even during her ascension.</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <!-- ==================== Gene 4: Divine Presence (Auras) ==================== -->
+  <GeneDef>
+    <defName>DG_DivinePresence</defName>
+    <label>divine presence</label>
+    <labelShortAdj>radiant</labelShortAdj>
+    <description>Her presence is a pressure upon the world. Where she walks, wounds close and the broken find their minds again. Her people hunger less and learn faster in her radiance. Where she watches, enemies falter and curse their courage. Where she abides, storms and toxins withdraw from the air itself. Divine favor gathers around her as she guards her people, to be spent on great mercies.\n\nShe is the antithesis of a psycaster. Her power flows from a deeper, older well - and that same well drinks deep from psychic harm. She cannot be taught the psychic arts, and enemy psycasts cut through her like nothing else can. This is the price of her auras.</description>
+    <iconPath>UI/Icons/Genes/Gene_ExtremePsychicAbility</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <displayOrderInCategory>103</displayOrderInCategory>
+    <biostatCpx>3</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <biostatArc>1</biostatArc>
+    <marketValueFactor>1.5</marketValueFactor>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <selectionWeight>0</selectionWeight>
+    <statOffsets>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+      <SocialImpact>0.5</SocialImpact>
+      <NegotiationAbility>0.5</NegotiationAbility>
+      <TradePriceImprovement>0.1</TradePriceImprovement>
+      <ConversionPower>0.8</ConversionPower>
+    </statOffsets>
+    <customEffectDescriptions>
+      <li>All four auras share a 50-tile base radius, scaling to 100 tiles at max Divine Favor.</li>
+      <li>Leadership: +18 mood, +45% melee, +9 dodge/hit, +5 shooting, +75% learning, half hunger for allies.</li>
+      <li>Healing: closes wounds, cures disease, auto-tends, removes scars, regrows limbs. Scales with favor.</li>
+      <li>Calming: ends mental breaks in colonists, grants catharsis.</li>
+      <li>Intimidation: hostiles take combat and consciousness penalties.</li>
+      <li>Dispels toxic fallout, cold snap, heat wave, volcanic winter, flashstorm, noxious haze, psychic drone.</li>
+      <li>+50% social impact, +50% negotiation, +10% trade prices, +80% conversion power.</li>
+      <li>Cannot become a psycaster. +50% psychic vulnerability - the price of her auras.</li>
+      <li>Her genes cannot be transferred to other pawns by any means.</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+
+</Defs>

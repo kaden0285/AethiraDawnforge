@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <IncidentDef>
+    <defName>DG_KurinPilgrimage</defName>
+    <label>Kurin pilgrimage</label>
+    <category>Misc</category>
+    <baseChance>1.5</baseChance>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>KurinDemigodess.IncidentWorker_KurinPilgrimage</workerClass>
+    <minRefireDays>10</minRefireDays>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+</Defs>

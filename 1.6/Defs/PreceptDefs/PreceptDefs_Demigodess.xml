@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <PreceptDef>
+    <defName>DG_DemigodessProtection_Revered</defName>
+    <issue>DG_DemigodessProtection</issue>
+    <label>demigodess revered</label>
+    <description>Our Demigodess is a living goddess - the first Kurin, the one who cannot be unmade, the reason we all think and dream. To stand in her shadow is to stand in warmth. To see her struck down is to see the sky split open.</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>0</displayOrderInIssue>
+    <associatedMemes>
+      <li>DG_DemigodessWorship</li>
+    </associatedMemes>
+    <comps>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>DG_DemigodessNearby_Ideo</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <IssueDef>
+    <defName>DG_DemigodessProtection</defName>
+    <label>demigodess reverence</label>
+  </IssueDef>
+
+</Defs>

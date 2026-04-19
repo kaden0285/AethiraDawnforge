@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== Childhood: Divine Fox Kit ==================== -->
+  <AlienRace.AlienBackstoryDef ParentName="Kurin_BaseBackstory">
+    <defName>DG_BackstoryChild_DivineFoxKit</defName>
+    <slot>Childhood</slot>
+    <title>divine fox kit</title>
+    <titleShort>divine kit</titleShort>
+    <baseDesc>[PAWN_nameDef] was the first of her kind - the first Kurin given true sentience by the dying AIs of Aolara, woven from archites recovered near a collapsed black hole. Crafted as a gift for Lord Vasilis Thane, even as a tiny kit her scraped knees would close on their own, and the sick brought into her nursery always slept better afterward. She is the oldest living Kurin. Every other mind of her people traces its awakening to hers.</baseDesc>
+    <skillGains>
+      <Melee>3</Melee>
+      <Social>4</Social>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Kurin_Nymph</li>
+      <li>Kurin_Citizen</li>
+      <li>Kurin_Elite</li>
+      <li>Kurin_EliteSoldier</li>
+      <li>Kurin_Natural</li>
+    </spawnCategories>
+    <shuffleable>false</shuffleable>
+  </AlienRace.AlienBackstoryDef>
+
+  <!-- ==================== Adulthood: Kurin Demigodess ==================== -->
+  <AlienRace.AlienBackstoryDef ParentName="Kurin_BaseBackstory">
+    <defName>DG_BackstoryAdult_KurinDemigodess</defName>
+    <slot>Adulthood</slot>
+    <title>kurin demigodess</title>
+    <titleShort>demigodess</titleShort>
+    <baseDesc>When her first master died of old age while she remained a girl of eighteen, [PAWN_nameDef] wept, buried him, and walked into the new Republic of Kurin to serve whoever needed her next. For four and a half centuries she healed its wounded, steadied its defenders, and stood at the shoulders of its leaders. She died in the siege of 5445, and again in the plague-years after, and again in the burning of the last cities - every time rising from whatever was left of her body. When the Republic's million had been cut down to ten thousand, she was on the last ship out. She is the last living memory of everything her people used to be.</baseDesc>
+    <skillGains>
+      <Melee>6</Melee>
+      <Social>5</Social>
+      <Intellectual>3</Intellectual>
+      <Medicine>2</Medicine>
+      <Construction>2</Construction>
+    </skillGains>
+    <spawnCategories>
+      <li>Kurin_Elite</li>
+      <li>Kurin_EliteSoldier</li>
+      <li>Kurin_Warmonger</li>
+      <li>Kurin_Army</li>
+    </spawnCategories>
+    <shuffleable>false</shuffleable>
+  </AlienRace.AlienBackstoryDef>
+
+</Defs>

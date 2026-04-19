@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Custom trait: Demigodess Beauty (like Beautiful but lore-flavored) -->
+  <TraitDef>
+    <defName>DG_DemigodessBeauty</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>demigodess beauty</label>
+        <description>[PAWN_nameDef] radiates an otherworldly, divine beauty. Mortals find themselves captivated by her presence, unable to look away.</description>
+        <degree>0</degree>
+        <statOffsets>
+          <PawnBeauty>2</PawnBeauty>
+          <SocialImpact>0.15</SocialImpact>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+  <!-- Custom trait: Eternal Wisdom (centuries of experience, boosts social and intellectual work) -->
+  <TraitDef>
+    <defName>DG_EternalWisdom</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>eternal wisdom</label>
+        <description>[PAWN_nameDef] carries the wisdom of centuries. She has seen civilizations rise and fall, and her counsel is without equal. Others instinctively trust her judgment.</description>
+        <degree>0</degree>
+        <statOffsets>
+          <NegotiationAbility>0.2</NegotiationAbility>
+          <TradePriceImprovement>0.05</TradePriceImprovement>
+          <ResearchSpeed>0.1</ResearchSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+</Defs>

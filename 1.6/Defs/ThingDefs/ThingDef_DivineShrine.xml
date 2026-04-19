@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>DG_DivineShrine</defName>
+    <label>divine shrine</label>
+    <description>A sacred stone shrine raised in honor of the Kurin Demigodess. Building it requires a fortune in gold, but while it stands on a home map its effects are transformative:\n\n- All Divine Favor gain is doubled, from every source.\n- Her ascension takes only half as long. When forced beyond the mortal plane, divine will brings her back here at this very spot.\n- The duration of her Bless Colonist effect is doubled, from 1.5 days to 3.\n\nHer worshippers pray at it for comfort during her absence and gather here on days of remembrance to honor her.\n\nAlso serves as a meditation focus for the artistically inclined.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Furniture/SteleLarge</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>15000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>50</Beauty>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">20</StyleDominance>
+    </statBases>
+    <costStuffCount>150</costStuffCount>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costList>
+      <Gold>1500</Gold>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <designationCategory>Misc</designationCategory>
+    <building>
+      <buildingTags>
+        <li>Decoration</li>
+      </buildingTags>
+    </building>
+    <comps>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes>
+          <li>Artistic</li>
+        </focusTypes>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>

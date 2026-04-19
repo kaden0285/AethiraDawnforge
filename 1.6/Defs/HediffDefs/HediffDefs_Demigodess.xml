@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== Demigodess Presence (master aura hediff, applied by gene) ==================== -->
+  <HediffDef>
+    <defName>DG_DemigodessPresence</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>divine presence</label>
+    <description>The Demigodess's aura presses outward in a 50-tile radius, calming allies, healing wounds, and intimidating enemies all within the same circle. The radius grows up to 100 tiles as her Divine Favor fills. Her life ticks its rhythm onto everyone who stands in her shadow.</description>
+    <defaultLabelColor>(0.8, 0.7, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1.0</initialSeverity>
+    <maxSeverity>1.0</maxSeverity>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages>
+      <li>
+        <label>divine presence</label>
+        <becomeVisible>true</becomeVisible>
+      </li>
+    </stages>
+    <comps>
+      <li Class="KurinDemigodess.HediffCompProperties_CalmingPresence">
+        <range>50</range>
+        <tickInterval>120</tickInterval>
+      </li>
+      <li Class="KurinDemigodess.HediffCompProperties_IntimidationAura">
+        <range>50</range>
+        <tickInterval>120</tickInterval>
+      </li>
+      <li Class="KurinDemigodess.HediffCompProperties_HealingPresence">
+        <range>50</range>
+        <healAmount>0.05</healAmount>
+        <tickInterval>60</tickInterval>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ==================== Aethira's Blessing (portable aura buff from Bless Colonist gizmo) ==================== -->
+  <HediffDef>
+    <defName>DG_AethirasBlessing</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>blessed by Aethira</label>
+    <description>Aethira Dawnforge laid her hand upon me and whispered ancient words. Her divine presence travels with me wherever I go - my wounds close, my hunger dulls, my blade strikes true, and the work flows through me like water. I carry her aura inside me.</description>
+    <defaultLabelColor>(1.0, 0.95, 0.4)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1.0</initialSeverity>
+    <maxSeverity>1.0</maxSeverity>
+    <stages>
+      <li>
+        <statFactors>
+          <WorkSpeedGlobal>1.5</WorkSpeedGlobal>
+          <GeneralLaborSpeed>1.5</GeneralLaborSpeed>
+        </statFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="KurinDemigodess.HediffCompProperties_BlessedBuff" />
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>90000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ==================== Divine Inspiration (passive combat buff from leadership aura) ==================== -->
+  <HediffDef>
+    <defName>DG_DivineInspirationHediff</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>divinely inspired</label>
+    <description>Bathed in the Demigodess's radiance. Your blade lands truer, your eye steadier, your step quicker. Hunger recedes.</description>
+    <defaultLabelColor>(1.0, 0.85, 0.2)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1.0</initialSeverity>
+    <maxSeverity>1.0</maxSeverity>
+    <stages>
+      <li>
+        <statFactors>
+          <MeleeDamageFactor>1.45</MeleeDamageFactor>
+          <GlobalLearningFactor>1.75</GlobalLearningFactor>
+        </statFactors>
+        <statOffsets>
+          <MeleeDodgeChance>9</MeleeDodgeChance>
+          <MeleeHitChance>9</MeleeHitChance>
+          <ShootingAccuracyPawn>5</ShootingAccuracyPawn>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ==================== Intimidation Debuff (applied to enemies by aura) ==================== -->
+  <HediffDef>
+    <defName>DG_IntimidatedHediff</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>divine intimidation</label>
+    <description>The Demigodess watches. The hands shake. Courage bleeds away. Every motion feels like dragging through water.</description>
+    <defaultLabelColor>(0.6, 0.2, 0.2)</defaultLabelColor>
+    <isBad>true</isBad>
+    <initialSeverity>1.0</initialSeverity>
+    <maxSeverity>1.0</maxSeverity>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeHitChance>-10</MeleeHitChance>
+          <MeleeDodgeChance>-10</MeleeDodgeChance>
+          <ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ==================== Divine Resurrection (replaces coma system) ==================== -->
+  <HediffDef>
+    <defName>DG_DivineResurrecting</defName>
+    <hediffClass>KurinDemigodess.Hediff_DivineResurrecting</hediffClass>
+    <label>divine resurrection</label>
+    <description>The Demigodess's body is remaking itself. Severed limbs reassemble, lethal wounds close, shattered organs reknit. She will rise once her brain and heart are whole again.</description>
+    <defaultLabelColor>(1.0, 0.8, 0.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <makesSickThought>false</makesSickThought>
+  </HediffDef>
+
+  <!-- ==================== Divine Regenerating (sequential part regrowth) ==================== -->
+  <HediffDef>
+    <defName>DG_DivineRegenerating</defName>
+    <hediffClass>KurinDemigodess.Hediff_DivineRegenerating</hediffClass>
+    <label>divine regeneration</label>
+    <description>Lost body parts are being regrown through divine power, one segment at a time. Each organ or limb takes hours to days to reassemble.</description>
+    <defaultLabelColor>(0.6, 1.0, 0.6)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <makesSickThought>false</makesSickThought>
+  </HediffDef>
+
+  <!-- ==================== Divine Recovery Coma (7 day, applied after off-map death/resurrection) ==================== -->
+  <HediffDef>
+    <defName>DG_DivineRecoveryComa</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>divine recovery coma</label>
+    <description>The Demigodess lies in a deep coma. Her body was hauled home through divine will, but her spirit is still untangling from the shock of dying far from safety. She will wake in seven days carrying every wound she brought back.</description>
+    <defaultLabelColor>(0.5, 0.3, 0.9)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1.0</initialSeverity>
+    <maxSeverity>1.0</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <label>divine recovery coma</label>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.01</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>420000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- Prevents the Demigodess corpse from rotting while resurrecting -->
+  <HediffDef>
+    <defName>DG_CorpsePreservation</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>divine preservation</label>
+    <description>Divine energy preserves this body from decay. Flies cannot land. Predators recoil. Rot will not begin.</description>
+    <defaultLabelColor>(0.8, 0.8, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+
+</Defs>

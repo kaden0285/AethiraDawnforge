@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- Force Kurin Republic faction to use Demigodess Worship meme -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[defName="Kurin_Faction"]</xpath>
+    <value>
+      <requiredMemes>
+        <li>DG_DemigodessWorship</li>
+      </requiredMemes>
+    </value>
+  </Operation>
+
+  <!-- Force Battle Foxes faction to use Demigodess Worship meme too -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[defName="Kurin_Faction_Hostile"]</xpath>
+    <value>
+      <requiredMemes>
+        <li>DG_DemigodessWorship</li>
+      </requiredMemes>
+    </value>
+  </Operation>
+
+</Patch>

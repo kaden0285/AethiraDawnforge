@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurin, The Celestial Fox - Aethira Dawnforge</title>
+<meta name="description" content="Full documentation for the Aethira Dawnforge RimWorld mod. Lore, mechanics, genes, auras, Divine Favor, failsafes, dependencies, and compatibility.">
+<style>
+  :root {
+    --bg: #0a0f0a;
+    --bg-panel: #111a14;
+    --bg-panel-2: #15201a;
+    --text: #e0d9c4;
+    --text-dim: #a8a294;
+    --jade: #00a86b;
+    --jade-soft: #48c794;
+    --gold: #d4af37;
+    --gold-soft: #e8c66b;
+    --border: #2a3a30;
+    --warning: #c0504d;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    margin: 0;
+    background: radial-gradient(ellipse at top, #14241c 0%, var(--bg) 60%);
+    color: var(--text);
+    font-family: Georgia, "Book Antiqua", serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  nav.topnav {
+    position: sticky; top: 0;
+    background: rgba(10, 15, 10, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    z-index: 100;
+    display: flex; flex-wrap: wrap; gap: 6px 16px;
+    justify-content: center; align-items: center;
+    font-size: 14px;
+  }
+  nav.topnav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.15s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.topnav a:hover { color: var(--jade-soft); border-bottom-color: var(--jade-soft); }
+  nav.topnav .brand { color: var(--gold-soft); font-weight: bold; margin-right: auto; }
+  header.hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  header.hero h1 {
+    font-size: 2.8em;
+    margin: 0 0 12px;
+    color: var(--gold-soft);
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+  header.hero .subtitle {
+    font-size: 1.25em;
+    color: var(--jade-soft);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  header.hero .tagline {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--text-dim);
+    font-size: 1.05em;
+  }
+  header.hero .links {
+    margin-top: 28px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+    justify-content: center;
+  }
+  header.hero .links a {
+    display: inline-block;
+    padding: 10px 22px;
+    background: var(--bg-panel);
+    color: var(--text);
+    border: 1px solid var(--jade);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+  header.hero .links a:hover {
+    background: var(--jade);
+    color: var(--bg);
+    box-shadow: 0 0 16px rgba(0, 168, 107, 0.4);
+  }
+  main {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  section { margin-bottom: 56px; }
+  h2 {
+    color: var(--gold-soft);
+    font-size: 1.8em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-top: 48px;
+    letter-spacing: 1px;
+  }
+  h3 {
+    color: var(--jade-soft);
+    font-size: 1.3em;
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+  h4 {
+    color: var(--gold-soft);
+    font-size: 1.05em;
+    margin-top: 22px;
+    margin-bottom: 6px;
+  }
+  p { margin: 10px 0; }
+  a { color: var(--jade-soft); }
+  a:hover { color: var(--gold-soft); }
+  ul, ol { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--gold-soft); }
+  em { color: var(--jade-soft); font-style: italic; }
+  code {
+    background: var(--bg-panel-2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.92em;
+    color: var(--jade-soft);
+    border: 1px solid var(--border);
+  }
+  .panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+  .panel-warning {
+    background: linear-gradient(180deg, #2a1818 0%, #1a1010 100%);
+    border: 1px solid var(--warning);
+  }
+  .panel-warning h3 { color: #ff9a97; }
+  .panel-gold {
+    background: linear-gradient(180deg, #1f1a0b 0%, #15120a 100%);
+    border: 1px solid var(--gold);
+  }
+  .gene-card {
+    background: var(--bg-panel);
+    border-left: 3px solid var(--jade);
+    padding: 14px 20px;
+    margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .gene-card.archite { border-left-color: var(--gold); }
+  .gene-card .gene-tag {
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: var(--jade);
+    color: var(--bg);
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .gene-card.archite .gene-tag { background: var(--gold); }
+  .aura-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .aura-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 20px;
+  }
+  .aura-card h4 {
+    margin-top: 0;
+    color: var(--jade-soft);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  th {
+    background: var(--bg-panel-2);
+    color: var(--gold-soft);
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95em;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95em;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg-panel-2); }
+  .pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  .pill-required { background: var(--warning); color: white; }
+  .pill-optional { background: var(--jade); color: var(--bg); }
+  .pill-blocked { background: #555; color: var(--text); }
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    font-size: 0.9em;
+  }
+  .quote {
+    border-left: 3px solid var(--gold);
+    padding: 4px 18px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin: 18px 0;
+  }
+  .TOC-mobile { display: none; }
+  @media (max-width: 720px) {
+    header.hero h1 { font-size: 2em; }
+    header.hero { padding: 50px 16px 40px; }
+    nav.topnav { font-size: 13px; gap: 4px 12px; }
+    nav.topnav .brand { width: 100%; text-align: center; margin: 0 0 4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="#top" class="brand">Aethira Dawnforge</a>
+  <a href="#lore">Lore</a>
+  <a href="#genes">Genes</a>
+  <a href="#auras">Auras</a>
+  <a href="#favor">Favor</a>
+  <a href="#abilities">Abilities</a>
+  <a href="#shrine">Shrine</a>
+  <a href="#immortality">Immortality</a>
+  <a href="#events">Events</a>
+  <a href="#settings">Settings</a>
+  <a href="#deps">Dependencies</a>
+  <a href="#compat">Compat</a>
+  <a href="#troubleshoot">Help</a>
+  <a href="#credits">Credits</a>
+</nav>
+
+<header class="hero" id="top">
+  <h1>Kurin, The Celestial Fox</h1>
+  <div class="subtitle">Aethira Dawnforge, immortal Demigodess of the Kurin</div>
+  <p class="tagline">
+    A RimWorld 1.6 mod centered on a single immortal character who cannot be killed, lost, or taken from you. Her power is presence, not violence. She heals, calms, and protects her people, and when she falls, she always comes back.
+  </p>
+  <div class="links">
+    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3707968015" target="_blank" rel="noopener">Steam Workshop</a>
+    <a href="#deps">Dependencies</a>
+    <a href="#troubleshoot">Troubleshooting</a>
+  </div>
+</header>
+
+<main>
+
+<section id="lore">
+<h2>Who Is Aethira?</h2>
+<p>
+  When a meteor of concentrated archites was recovered near a black hole and brought to the glitterworld of Aolara, the lead bioengineering AI used it to create the very first sentient Kurin. All other Kurin were simple designermates for the wealthy. This one was different. The archites in her blood gave her true sentience, self-healing, and immortality. She was the prototype. She was the first Kurin the AIs took pity on. And she is the reason every Kurin that came after eventually gained a mind of her own.
+</p>
+<p>
+  Aethira Dawnforge stood at the founding of the Republic of Kurin. She watched it thrive for two centuries. She was there in 5445 when the siege began, when the farmlands burned, when one million of her people became less than ten thousand. She died in that siege more than once. She always came back. When the survivors stole their ships and fled to the stars, Aethira was on the last ship out, carrying the wounded in her arms.
+</p>
+<p>
+  Now, centuries later on a forgotten rimworld, she starts again. She is not a warrior. She does not fight with supernatural strength. Her power is her presence. Those who stand near her feel no fear, heal from their wounds, and fight beyond their limits. Those who oppose her feel only dread. She is the last living witness to the fall of the Republic, and she will build a new home for her people or die trying. Again, and again, and again.
+</p>
+<div class="quote">
+  She has buried every colony that ever called her sister. This one will be no exception, but not before you have grown old together, time and time again.
+</div>
+</section>
+
+<section id="overview">
+<h2>Quick Overview</h2>
+<p>
+  Aethira is a hand-crafted immortal character. The mod ships a full Kurin race (forked from Kurin HAR Edition), four custom divine genes, four stackable auras, a Divine Favor resource, two gizmo abilities, a buildable shrine, a preset ideology, custom backstories, custom traits, custom scenarios, and a seven-layer failsafe chain that makes her loss mathematically implausible.
+</p>
+<ul>
+  <li><strong>She cannot die permanently.</strong> Seven independent safety nets plus an on-disk backup.</li>
+  <li><strong>She is not a combat god.</strong> Vanilla melee, no armor bonuses, no damage buffs. She heals everyone, including herself, over time.</li>
+  <li><strong>Only one Aethira can exist.</strong> Gene Siphon, Gene Assembler, and dev-mode cloning are all rejected automatically.</li>
+  <li><strong>She is always female, always young.</strong> Her body stops aging at 18. Her chronological age is five centuries and climbing.</li>
+</ul>
+</section>
+
+<section id="genes">
+<h2>The Four Divine Genes</h2>
+
+<div class="gene-card archite">
+  <h3>Divine Constitution <span class="gene-tag">Archite</span></h3>
+  <p><em>Her body is wrought of divine will. No disease takes root. No poison lingers. No single blow may fell her.</em></p>
+  <ul>
+    <li>Cannot be felled by pain. Any single blow is capped at 25% of max HP, so nothing one-shots her.</li>
+    <li>Immune to every disease, toxin, chemical, addiction, and food poisoning in the game.</li>
+    <li>Does not hunger, freeze, or overheat.</li>
+    <li>Cannot be kidnapped, banished, sold, traded, or carried off the map by any faction or mechanic.</li>
+    <li>On death, a scouring shockwave of divine fire bursts outward, burning and stunning hostile pawns within roughly 12 tiles. Allies and neutrals are untouched.</li>
+  </ul>
+</div>
+
+<div class="gene-card archite">
+  <h3>Divine Vitality <span class="gene-tag">Archite</span></h3>
+  <p><em>She cannot truly die. Severed limbs regrow. Lethal wounds close. Her body remembers its divine form and returns to it, hour by hour.</em></p>
+  <ul>
+    <li>Constant self-healing, alive or dead. Auto-tends her own injuries.</li>
+    <li>Regrows lost limbs and organs sequentially over hours. Scars fade over time.</li>
+    <li>Ageless past 18. Her chronological age climbs forever but her body never changes.</li>
+    <li>Slain on her home map: body regenerates, resurrects when the brain and heart are restored.</li>
+    <li>Slain away from home: body teleported home, wakes from a 7-day recovery coma.</li>
+    <li>Body destroyed, eaten, or otherwise lost entirely: returns from nothing after 7 days.</li>
+  </ul>
+</div>
+
+<div class="gene-card">
+  <h3>Divine Grace</h3>
+  <p><em>Grace of motion without end. She needs little rest, and her immense divine pocket-space bends weight itself.</em></p>
+  <ul>
+    <li>Learns 50% faster than any mortal pawn.</li>
+    <li>Rests half as often as a mortal (RestFallRateFactor 0.5).</li>
+    <li><strong>Divine pocket storage: carries 500 kg beyond the normal limit</strong>, consistent on her person and in caravans.</li>
+    <li><strong>Nothing rots or deteriorates while stored on her.</strong> Meat, corpses, fresh herbal medicine all frozen in time the moment they enter her inventory.</li>
+    <li>Ignores terrain-induced pathing slowdown. Mud, marsh, snow, shallow water, blood, ash, sand cost her no more than dirt.</li>
+  </ul>
+</div>
+
+<div class="gene-card archite">
+  <h3>Divine Presence <span class="gene-tag">Archite</span></h3>
+  <p><em>Her presence is a pressure upon the world. Where she walks, wounds close and the broken find their minds again.</em></p>
+  <ul>
+    <li>Source of all four auras (see <a href="#auras">below</a>).</li>
+    <li>Dispels toxic fallout, cold snap, heat wave, volcanic winter, flashstorm, noxious haze, and psychic drone from any home map she is on.</li>
+    <li>+50% social impact, +50% negotiation, +10% trade prices, +80% conversion power for herself.</li>
+    <li><strong>Cannot become a psycaster.</strong> She is the antithesis of one; her power comes from a deeper well.</li>
+    <li><strong>+50% psychic vulnerability.</strong> Enemy psycasts cut through her like nothing else can. This is the deliberate balance trade for her auras. Psycasts are her counter.</li>
+    <li>Her divine genes cannot be transferred, copied, or extracted by any means.</li>
+  </ul>
+</div>
+
+<p><em>Also included:</em> a cosmetic snow-white hair gene (auto-applied), forced straight ears (both pointed up), and forced jade green eyes (requires <a href="#compat">Kurin Facial Animation</a> for the eye color). Mod-wide: <strong>no Kurin can have facial hair</strong>. All Kurins have their beard defaulted to none at generation, enforced via Harmony patch on <code>PawnGenerator.GeneratePawn</code>.</p>
+</section>
+
+<section id="auras">
+<h2>The Four Auras</h2>
+<p>
+  Every aura starts at a 50-tile base radius and scales linearly up to 100 tiles as Divine Favor fills. Healing rate and every aura effect scale the same way: 1x at empty favor, 2x at full.
+</p>
+<div class="aura-grid">
+  <div class="aura-card">
+    <h4>Leadership</h4>
+    <ul>
+      <li>+18 mood for allied pawns in range</li>
+      <li>+45% melee damage</li>
+      <li>+9 melee dodge and hit</li>
+      <li>+5 shooting accuracy</li>
+      <li>+75% learning speed</li>
+      <li>Half hunger rate</li>
+    </ul>
+  </div>
+  <div class="aura-card">
+    <h4>Healing</h4>
+    <ul>
+      <li>Closes injuries constantly (rate scales with favor)</li>
+      <li>Auto-tends untended wounds</li>
+      <li>Slowly cures active diseases</li>
+      <li>Reduces blood loss</li>
+      <li>Removes scars over time</li>
+      <li>Regrows missing body parts over hours</li>
+    </ul>
+  </div>
+  <div class="aura-card">
+    <h4>Calming Presence</h4>
+    <ul>
+      <li>Ends active mental breaks on nearby colonists</li>
+      <li>Grants Catharsis mood buff</li>
+      <li>Works the moment she enters range</li>
+    </ul>
+  </div>
+  <div class="aura-card">
+    <h4>Intimidation</h4>
+    <ul>
+      <li>Debuffs hostile pawns only</li>
+      <li>Reduces enemy hit chance</li>
+      <li>Reduces enemy dodge</li>
+      <li>Reduces enemy shooting accuracy</li>
+      <li>Reduces enemy consciousness</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section id="favor">
+<h2>Divine Favor</h2>
+<p>
+  Divine Favor is a colony resource that accumulates around Aethira as she watches over her people. It scales every aura's radius and strength, and it pays for her two active gizmos.
+</p>
+<p><strong>Capacity:</strong> 0 to 100. Favor never decays over time; it only drops when spent.</p>
+
+<h3>Sources</h3>
+<table>
+  <thead>
+    <tr><th>Source</th><th>Amount</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Daily passive (base)</td><td>+5</td><td>While Aethira is alive on a home map</td></tr>
+    <tr><td>Daily passive (high mood)</td><td>+10</td><td>If average colony mood is 50% or higher</td></tr>
+    <tr><td>Kurin Pilgrimage event</td><td>+20</td><td>Triggered when allied Kurin visitors arrive</td></tr>
+    <tr><td>Day of Remembrance</td><td>+30</td><td>Annual colony-wide event</td></tr>
+    <tr><td>Aethira's Guidance</td><td>+3</td><td>Daily 33% roll, random colonist gets a mood buff</td></tr>
+    <tr><td>Friendly visitor departure</td><td>+2</td><td>Each non-player humanlike that leaves alive</td></tr>
+    <tr><td>Hostile kill on her map</td><td>+1</td><td>Capped at 20 raw kills per day</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Divine Shrine doubles every source above.</strong> Daily passive becomes +10/+20. A pilgrimage becomes +40. Kill cap stays at 20 raw kills but pays +40 per day instead of +20.</p>
+
+<h3>Effects</h3>
+<ul>
+  <li><strong>Aura radius scales 1x to 2x</strong> from empty to full favor. A full favor bar doubles the area of every aura from 50 tiles to 100 tiles.</li>
+  <li><strong>Healing aura rate scales 1x to 2x.</strong> Base 0.05 per tick, up to 0.10 at max favor.</li>
+  <li><strong>Pays for Divine Blessing</strong> (100 favor) and <strong>Bless Colonist</strong> (10 favor).</li>
+</ul>
+</section>
+
+<section id="abilities">
+<h2>Command-Bar Abilities</h2>
+<p>Two gizmo buttons appear when Aethira is selected.</p>
+
+<h3>Favor: N/100 (spends 100)</h3>
+<p>
+  Invokes the Divine Blessing. Every colonist currently on Aethira's map is fully restored: every injury healed, every disease cured, every status effect removed, and food, rest, joy, and mood all maxed. A complete "wake from ascension" treatment applied to everyone at once. Costs the full 100-favor bar.
+</p>
+
+<h3>Bless Colonist (spends 10)</h3>
+<p>
+  Targets a single colonist and applies a portable copy of Aethira's aura. The blessed pawn carries:
+</p>
+<ul>
+  <li>Leadership, healing, calming, and intimidation aura effects wherever they go</li>
+  <li>+50% work speed bonus</li>
+  <li>Constant healing, auto-tend, scar removal, and limb regrowth on themselves</li>
+  <li>Blood loss and disease reduction</li>
+  <li>Half hunger rate</li>
+</ul>
+<p>
+  <strong>Duration:</strong> 1.5 days by default, doubled to 3 days if a Divine Shrine is built. The blessing follows them across maps, into caravans, and onto other planets. It persists even during Aethira's own ascension, which makes it the go-to prep for long expeditions.
+</p>
+</section>
+
+<section id="shrine">
+<h2>The Divine Shrine</h2>
+<p>
+  A buildable monument. Requires <strong>Complex Furniture research</strong>. Costs <strong>1500 gold, 2 industrial components, and 150 stone blocks</strong>. While at least one shrine stands on any home map:
+</p>
+<ul>
+  <li>Aethira's ascension time is halved (from 7 days to 3.5 days)</li>
+  <li>Bless Colonist duration is doubled (from 1.5 days to 3 days)</li>
+  <li>All Divine Favor gain from every source is doubled</li>
+  <li>Her ascension return materializes at the shrine instead of a random safe cell</li>
+  <li>Functions as an Artistic meditation focus</li>
+</ul>
+<p>The shrine is a late-game gold sink that dramatically expands her presence. It is not required for any core mechanic, only an amplifier.</p>
+</section>
+
+<section id="immortality">
+<h2>Immortality: The Seven-Layer Failsafe</h2>
+<p>
+  Aethira is the entire point of the mod. Losing her breaks the playthrough. The mod therefore treats her death as a first-class engineering problem and layers independent safeties in case any one of them silently fails.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Layer</th><th>Trigger</th><th>Action</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1. Damage Cap</td><td>Any hit exceeding 25% of her max HP</td><td>Cap the hit at 25%. Prevents one-shots.</td></tr>
+    <tr><td>2. Deathless Gene</td><td>Killed on home map</td><td>Apply resurrecting hediff, body regrows, wakes when brain and heart are whole.</td></tr>
+    <tr><td>3. Corpse Protection</td><td>Fire, explosions, predators, hauling, mountain collapse</td><td>Corpse is indestructible, cannot be eaten, butchered, hauled, or despawned.</td></tr>
+    <tr><td>4. Map Teardown Rescue</td><td>Map dispose / destruction</td><td>Body is extracted to another home map before the teardown completes.</td></tr>
+    <tr><td>5. Anti-Removal</td><td>Kidnap, banishment, sale, gene transfer, faction change</td><td>All rejected by Harmony prefixes.</td></tr>
+    <tr><td>6. Emergency Respawn</td><td>60 in-game seconds missing from the world</td><td>Full Divine Ascension recovery, returns after 7 days (3.5 with shrine).</td></tr>
+    <tr><td>7. Disk Snapshot</td><td>Every failsafe scan, per-save</td><td>Writes skills, relations, memories, work priorities, policies, titles to <code>&lt;Config&gt;/KurinDemigodess_PawnBackup_&lt;uuid&gt;.txt</code>.</td></tr>
+  </tbody>
+</table>
+
+<p>
+  If all six in-memory layers somehow fail (they have, once, when a DLL load silently failed and a predator ate her), Layer 7 rebuilds her mind from disk onto a freshly spawned Kurin Demigodess pawn. Skills, relations, work priorities, policies, and royal titles all persist. Apparel, equipment, and inventory do NOT teleport with her when she rebuilds from nothing; gear cannot follow a body that dissolved.
+</p>
+<p>
+  Every return maxes her needs. She never wakes starving or exhausted.
+</p>
+
+<h3>Death Recoil</h3>
+<p>When Aethira dies, a colony-wide AoE pulse radiates outward from her body. It burns and stuns hostile pawns within about 12 tiles and leaves allies and neutrals untouched. Narrative flair and tactical value in one: the people who just killed her do not get to walk away cleanly.</p>
+</section>
+
+<section id="events">
+<h2>Events and Ambient Effects</h2>
+
+<h3>Weather Purge</h3>
+<p>While Aethira is alive on a home map, the following weather conditions dispel themselves automatically, about every 40 seconds:</p>
+<ul>
+  <li>Toxic fallout</li>
+  <li>Cold snap</li>
+  <li>Heat wave</li>
+  <li>Volcanic winter</li>
+  <li>Flashstorm</li>
+  <li>Noxious haze</li>
+  <li>Psychic drone</li>
+</ul>
+
+<h3>Kurin Pilgrimage</h3>
+<p>An allied Kurin faction occasionally sends 2-5 pilgrims to visit Aethira. They arrive bearing offerings of silver, herbal medicine, and wood. Each pilgrimage grants +20 Divine Favor immediately.</p>
+
+<h3>Aethira's Guidance</h3>
+<p>Daily 33% roll. When it triggers, a random non-Aethira colonist gets a guidance letter and a small mood buff. +3 Divine Favor.</p>
+
+<h3>Day of Remembrance</h3>
+<p>Annual. The entire colony receives a large mood buff commemorating the fall of the Republic of Kurin. +30 Divine Favor.</p>
+
+<h3>First-Load Narrative Letter</h3>
+<p>The first time Aethira appears on a home map in a save, a one-time lore letter introduces her to the player.</p>
+
+<h3>Ascension Shockwave</h3>
+<p>When Aethira enters Divine Ascension, a visual flash, a sound, and a colony-wide awe thought ripple outward. A bottom-right alert shows the live countdown until her return.</p>
+</section>
+
+<section id="content">
+<h2>Additional Content</h2>
+<ul>
+  <li><strong>2 custom backstories:</strong> Divine Fox Kit (childhood) and Kurin Demigodess (adulthood).</li>
+  <li><strong>2 custom traits:</strong> Demigodess Beauty and Eternal Wisdom.</li>
+  <li><strong>Ideology meme:</strong> Demigodess Worship. Anti-slavery, pro-charity, morally just, Divine Herald / Sacred Voice moral guide.</li>
+  <li><strong>Preset ideology:</strong> The Dawnforge Covenant.</li>
+  <li><strong>2 custom scenarios:</strong> The Celestial Fox (Primitive and Tribal tiers). Starts with Aethira and two Kurin followers. Opens with lore dialog about the fall of Aolara.</li>
+  <li><strong>Buildable Divine Shrine.</strong></li>
+  <li><strong>Full Kurin HAR race.</strong> Forked from Seioch's Kurin HAR Edition; fully included, do not run the original alongside.</li>
+  <li><strong>Mod-wide appearance rules:</strong> no Kurin can have facial hair; Aethira specifically has auto-enforced snow white hair, straight ears, and jade green eyes.</li>
+</ul>
+</section>
+
+<section id="settings">
+<h2>Mod Settings</h2>
+<p>Open the Mod Options menu in RimWorld and find "Kurin, The Celestial Fox - Aethira Dawnforge". Configurable:</p>
+<ul>
+  <li>Failsafe scan interval (default 1200 ticks = 20 seconds)</li>
+  <li>Failsafe miss threshold (default 3, so total trigger time is 60 in-game seconds)</li>
+  <li>Ascension duration in days (default 7, halved by shrine)</li>
+  <li>Normal gene enforcement interval (default 600 ticks = 10 seconds)</li>
+  <li>Heavy gene enforcement interval (default 7500 ticks = 125 seconds)</li>
+  <li>First-load narrative letter on/off</li>
+  <li>Death-recoil AoE on/off and radius</li>
+  <li>Pilgrimage events on/off</li>
+  <li>Divine Favor system on/off</li>
+  <li>Favor-scaling healing aura on/off</li>
+  <li>Weather and condition purge on/off</li>
+  <li>Aethira's Guidance on/off</li>
+  <li>Day of Remembrance on/off</li>
+</ul>
+<p><strong>Warning:</strong> lowering the failsafe scan interval or miss threshold can cause false positives during map transitions. The default 60-second window was tuned after extensive testing.</p>
+</section>
+
+<section id="deps">
+<h2>Dependencies</h2>
+
+<h3>Hard Dependencies (required)</h3>
+<table>
+  <thead>
+    <tr><th>Mod / DLC</th><th>Package ID</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RimWorld 1.6</td>
+      <td>(base game)</td>
+      <td><span class="pill pill-required">Required</span></td>
+    </tr>
+    <tr>
+      <td>Biotech DLC</td>
+      <td><code>Ludeon.RimWorld.Biotech</code></td>
+      <td><span class="pill pill-required">Required</span></td>
+    </tr>
+    <tr>
+      <td>Ideology DLC</td>
+      <td><code>Ludeon.RimWorld.Ideology</code></td>
+      <td><span class="pill pill-required">Required</span></td>
+    </tr>
+    <tr>
+      <td>Harmony</td>
+      <td><code>brrainz.harmony</code></td>
+      <td><span class="pill pill-required">Required</span></td>
+    </tr>
+    <tr>
+      <td>Humanoid Alien Races</td>
+      <td><code>erdelf.HumanoidAlienRaces</code></td>
+      <td><span class="pill pill-required">Required</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Optional Compatibility (supported, not required)</h3>
+<table>
+  <thead>
+    <tr><th>Mod</th><th>What You Get</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kurin HAR Facial Animation (<code>darkmiz.Kurin.FacialAnimation</code>)</td>
+      <td>Aethira gets forced jade green eyes automatically. Adds animated facial expressions to all Kurin.</td>
+      <td><span class="pill pill-optional">Optional</span></td>
+    </tr>
+    <tr>
+      <td>[NL] Facial Animation (<code>Nals.FacialAnimation</code>)</td>
+      <td>Transitive dependency of Kurin Facial Animation. Needed if you use the Kurin Facial Animation mod.</td>
+      <td><span class="pill pill-optional">Optional</span></td>
+    </tr>
+    <tr>
+      <td>Perspective Shift</td>
+      <td>Works out of the box. No integration needed.</td>
+      <td><span class="pill pill-optional">Optional</span></td>
+    </tr>
+  </tbody>
+</table>
+<p><em>If you do not have Kurin Facial Animation installed, Aethira's eye color falls back to HAR's built-in palette and her appearance enforcement silently skips the eye step.</em></p>
+
+<h3>Load Order</h3>
+<ul>
+  <li><strong>Load after:</strong> Harmony, Humanoid Alien Races, all DLCs.</li>
+  <li><strong>Load before:</strong> Kurin HAR Facial Animation (if installed), any mod that patches Kurin appearance.</li>
+</ul>
+</section>
+
+<section id="compat">
+<h2>Incompatibilities</h2>
+<div class="panel panel-warning">
+<h3>Do Not Use With</h3>
+<ul>
+  <li><strong>Original Kurin HAR Edition</strong> (same package ID). This mod replaces it entirely. Running both at once will crash or produce undefined behavior. Unsubscribe from the original before subscribing here.</li>
+  <li><strong>Garam Race Addon</strong> (<code>Dalrae.GaramRaceAddon</code>) - blocked in mod metadata.</li>
+  <li><strong>Garam Advanced Apparel</strong> (<code>Dalrae.GaramAdvancedApparel</code>) - blocked in mod metadata.</li>
+</ul>
+</div>
+
+<h3>Known Good With</h3>
+<ul>
+  <li>Most major overhauls (Combat Extended, Rim of Madness, Vanilla Expanded suite, etc.) run without issue. Aethira's patches are scoped to her gene check.</li>
+  <li>Alpha Genes, Biotech gene packs, CE genes: fully compatible; her genes cannot be added to non-Aethira pawns by any of them.</li>
+  <li>Children and Learning, Biotech pregnancy features: her ageless gene means she cannot be born naturally from an ectogenesis or pregnancy; she spawns via scenario or dev-mode only.</li>
+  <li>Gene Assembler / Gene Siphon mods: blocked from cloning her genes. Attempts are rejected at the point of AddGene.</li>
+</ul>
+</section>
+
+<section id="troubleshoot">
+<h2>Troubleshooting</h2>
+
+<h3>Aethira did not appear at game start</h3>
+<ol>
+  <li>Confirm you started with one of the provided scenarios ("The Celestial Fox - Primitive" or "Tribal").</li>
+  <li>Open the dev console and search for <code>[KurinDemigodess] Harmony patches applied.</code> If that line is missing, the DLL failed to load. Usually means a prior mod broke the load order; see below.</li>
+  <li>Expected: <code>28 succeeded, 0 failed.</code></li>
+</ol>
+
+<h3>"Harmony patches applied" message is missing</h3>
+<p>The DLL did not load. Common causes:</p>
+<ul>
+  <li>Running the original Kurin HAR Edition at the same time (same package ID; they overwrite each other's assemblies).</li>
+  <li>A prior mod in load order threw during init and stopped assembly loading. Check the log for any Red Error before our mod.</li>
+  <li>File system permission issue on <code>1.6/Assemblies/KurinDemigodess.dll</code>.</li>
+</ul>
+
+<h3>She died and did not come back</h3>
+<p>Should not happen. If it does:</p>
+<ol>
+  <li>Open the log. Search for <code>[KurinDemigodess]</code> messages near the death.</li>
+  <li>Check the failsafe log at <code>&lt;RimWorld Config&gt;/KurinDemigodess_FailsafeLog.txt</code>.</li>
+  <li>Use the dev-mode debug action "Force Emergency Respawn" to bring her back manually; the snapshot on disk will rebuild her mind.</li>
+  <li>Report the bug with the log section attached.</li>
+</ol>
+
+<h3>Her ears are flopped or her eyes are the wrong color</h3>
+<p>Her appearance is enforced every heavy cycle (default 125 seconds). If you see incorrect ears or eyes, wait two minutes or trigger a save/load. For eyes specifically, you need <a href="#compat">Kurin Facial Animation</a> installed; without it, her eye color falls back to HAR defaults.</p>
+
+<h3>Debug / Dev Mode Actions</h3>
+<p>Enable dev mode. Open the Debug Actions menu. Scroll to "Kurin Demigodess". You will find:</p>
+<ul>
+  <li>Dump State (prints the full failsafe tracker state to the log)</li>
+  <li>Find Aethira (highlights her current location)</li>
+  <li>Reset Miss Counter</li>
+  <li>Force Emergency Respawn</li>
+  <li>Force Kill (for testing death flow)</li>
+  <li>Trigger Ascension</li>
+  <li>Death Recoil Pulse</li>
+  <li>Grant Divine Favor (+10 or +100)</li>
+  <li>Invoke Divine Blessing</li>
+  <li>Force Kurin Pilgrimage</li>
+</ul>
+</section>
+
+<section id="design">
+<h2>Design Principles</h2>
+<p>
+  Aethira is deliberately built as a support-pillar character, not a combat deity. Design rules baked into the mod:
+</p>
+<ul>
+  <li><strong>Her one power is regeneration.</strong> She has no flat damage reduction, no armor stats, no melee damage buffs on her own genes. Every combat bonus is routed through an aura that benefits her allies, not her.</li>
+  <li><strong>Psycasts are her counter.</strong> +50% psychic sensitivity is the intentional price of her auras. She cannot learn psycasts herself and takes extra damage from enemy ones.</li>
+  <li><strong>No active targeted abilities.</strong> Everything she does is passive auras plus two gizmo buttons. No ability tree, no cooldowns, no micro.</li>
+  <li><strong>Only one of her can exist.</strong> Gene transfer is blocked at the engine level and her scan cleans up any impostors.</li>
+  <li><strong>She cannot be lost.</strong> Seven independent safety layers plus an on-disk snapshot. Permanent removal is treated as a bug, not a balance outcome.</li>
+  <li><strong>Gear does not follow a dissolved body.</strong> If she rebuilds from nothing, she comes back with only her mind; clothes and weapons stay where they fell.</li>
+</ul>
+</section>
+
+<section id="credits">
+<h2>Credits and License</h2>
+<ul>
+  <li><strong>Original Kurin HAR Edition:</strong> Seioch, MaroonToon, Ninedaylongbow.</li>
+  <li><strong>Aethira Dawnforge design and implementation:</strong> Kaden.</li>
+  <li><strong>Harmony:</strong> Andreas Pardeike.</li>
+  <li><strong>Humanoid Alien Races framework:</strong> erdelf.</li>
+</ul>
+<p>
+  License follows the original Kurin HAR Edition. Redistribution with attribution is permitted. Do not reupload to the Workshop without attribution.
+</p>
+</section>
+
+</main>
+
+<footer>
+  <p>Kurin, The Celestial Fox - Aethira Dawnforge. RimWorld 1.6 mod.</p>
+  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3707968015" target="_blank" rel="noopener">Steam Workshop</a> &middot; <a href="#top">Back to top</a></p>
+</footer>
+
+<script>
+  // Smooth-scroll all in-page anchor links, with a sticky-nav offset.
+  // Belt-and-suspenders in case CSS scroll-behavior or scroll-padding-top does not apply.
+  (function () {
+    var NAV_OFFSET = 70;
+
+    function scrollToTarget(target) {
+      if (!target) return;
+      var rect = target.getBoundingClientRect();
+      var top = rect.top + window.pageYOffset - NAV_OFFSET;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href || href.length < 2) return;
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      scrollToTarget(target);
+      // update the URL hash without jumping
+      if (history.replaceState) history.replaceState(null, '', href);
+    }, false);
+
+    // On initial load with a hash, scroll with offset after layout settles.
+    if (window.location.hash && window.location.hash.length > 1) {
+      window.addEventListener('load', function () {
+        var target = document.getElementById(window.location.hash.slice(1));
+        if (target) setTimeout(function () { scrollToTarget(target); }, 0);
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

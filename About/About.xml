@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Kurin, The Celestial Fox - Aethira Dawnforge</name>
+  <author>Seioch, MaroonToon, Ninedaylongbow, Kaden</author>
+  <packageId>Seioch.Kurin.HAR</packageId>
+  <modIconPath IgnoreIfNoMatchingField="True">Kurin/ModIcon</modIconPath>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>erdelf.HumanoidAlienRaces</packageId>
+      <displayName>Humanoid Alien Race Framework</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/839005762</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Biotech</packageId>
+      <displayName>Biotech</displayName>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Ideology</packageId>
+      <displayName>Ideology</displayName>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>erdelf.HumanoidAlienRaces</li>
+  </loadAfter>
+  <loadBefore>
+    <li>darkmiz.Kurin.FacialAnimation</li>
+    <li>Nals.FacialAnimation</li>
+  </loadBefore>
+  <incompatibleWith>
+    <li>Dalrae.GaramRaceAddon</li>
+    <li>Dalrae.GaramAdvancedApparel</li>
+  </incompatibleWith>
+  <description>
+========== Kurin, The Celestial Fox - Aethira Dawnforge ==========
+
+A fork of Kurin HAR Edition centered on Aethira Dawnforge, an immortal Kurin Demigodess. She is not a warrior. She is an eternal leader, healer, and protector who cannot be killed, lost, or removed by any means.
+
+Full documentation: https://YOUR-USERNAME.github.io/KurinDemigodess/
+
+========== Who Is Aethira? ==========
+When a meteor of concentrated archites was recovered near a black hole and brought to the glitterworld of Aolara, the lead bioengineering AI used it to create the very first sentient Kurin. The archites in her blood gave her true sentience, self-healing, and immortality. She was the prototype, the first Kurin the AIs took pity on, and the reason all others eventually gained their minds.
+
+She stood at the founding of the Republic of Kurin. She watched it thrive for two centuries. She was there in 5445 when the siege began and one million Kurin became less than ten thousand. She died in the siege more than once, but she always came back. When the survivors stole their ships and fled to the stars, Aethira was on the last ship out, carrying the wounded.
+
+Now, centuries later on a forgotten rimworld, she starts again. She does not fight with supernatural strength. Her power is her presence. Those who stand near her feel no fear, heal from their wounds, and fight beyond their limits. Those who oppose her feel only dread.
+
+========== What She Does ==========
+Four divine genes. Four 50-tile auras that scale to 100 tiles at max Divine Favor: leadership, healing, calming, intimidation. A weather purge that dispels toxic fallout, cold snap, heat wave, volcanic winter, flashstorm, noxious haze, and psychic drone on her home map. A Divine Favor resource (max 100) from daily passive gain, pilgrimages, Day of Remembrance events, Aethira's Guidance, friendly visitor departures, and hostile kills under her watch.
+
+Two command-bar abilities: a full-heal Divine Blessing (100 favor, heals every colonist on the map) and a targeted Bless Colonist (10 favor, portable 1.5-day aura that works anywhere).
+
+Divine pocket storage: carries 500 kg extra on her person and in caravans. Nothing rots or deteriorates while stored on her. Ignores terrain-induced slowdown.
+
+Build the Divine Shrine (1500 gold) to halve her ascension time, double Bless Colonist duration, and double all Divine Favor gain.
+
+Includes custom scenario, ideology, backstories, traits, thoughts, events, and a buildable Divine Shrine. Full Kurin HAR race included.
+
+========== Immortality ==========
+She cannot be killed permanently. Seven independent failsafe layers:
+1. Damage cap: no single hit exceeds 25% of max HP.
+2. Deathless: dies on home map, body regenerates and resurrects.
+3. Corpse protection: body is indestructible.
+4. Map teardown rescue: extracted before the map disposes.
+5. Anti-removal: kidnap, banish, sell, gene transfer all blocked.
+6. Emergency respawn: 60 in-game seconds missing triggers a full ascension recovery.
+7. On-disk snapshot: rebuilds her mind from file if all six above fail.
+
+Her divine genes cannot be transferred to other pawns. Any attempt is rejected automatically.
+
+========== Dependencies ==========
+Required:
+1. Harmony
+2. Humanoid Alien Races
+3. Biotech DLC
+4. Ideology DLC
+
+Optional (enhanced integration):
+- Kurin HAR Facial Animation - enables her forced jade green eye color
+- [NL] Facial Animation - transitive dep of the above
+- Perspective Shift - fully compatible, no integration needed
+
+!!! WARNING !!!
+This mod REPLACES the standard Kurin HAR Edition. You CANNOT have both installed at the same time or your game WILL crash. Unsubscribe from the original Kurin HAR before using this mod.
+
+========== Credits ==========
+Original Kurin HAR Edition by Seioch, MaroonToon, and Ninedaylongbow.
+Aethira Dawnforge by Kaden.
+
+For the full lore, mechanics guide, failsafe chain, settings, compat matrix, and troubleshooting, visit the documentation site linked above.
+  </description>
+</ModMetaData>
