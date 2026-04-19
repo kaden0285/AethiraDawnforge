@@ -2,7 +2,7 @@
 
 A fork of Kurin HAR Edition centered on [b]Aethira Dawnforge[/b], an immortal Kurin Demigodess. She is not a warrior. She is an eternal leader, healer, and protector who cannot be killed, lost, or removed by any means.
 
-[b][url=https://YOUR-USERNAME.github.io/KurinDemigodess/]Full documentation website[/url][/b] - lore, every mechanic, every gene, every failsafe, settings, compatibility. The Steam page covers highlights; the website covers everything.
+[b][url=https://kaden0285.github.io/AethiraDawnforge/]Full documentation website[/url][/b] - lore, every mechanic, every gene, every failsafe, settings, compatibility. The Steam page covers highlights; the website covers everything.
 
 [h2]Who Is Aethira?[/h2]
 
@@ -150,7 +150,7 @@ Her presence is a pressure upon the world. She is the antithesis of a psycaster.
 The mod enforces that only one Aethira can exist. Any attempt to add her genes to another pawn via Gene Siphon, Gene Assembler, dev-mode, or any other means is rejected automatically, and the foreign vessel has the genes stripped on the next scan.
 
 [h2]Full Documentation[/h2]
-Everything above is the short version. The [url=https://YOUR-USERNAME.github.io/KurinDemigodess/]documentation website[/url] covers:
+Everything above is the short version. The [url=https://kaden0285.github.io/AethiraDawnforge/]documentation website[/url] covers:
 [list]
 [*] Detailed lore and story
 [*] Every gene with every stat breakdown
