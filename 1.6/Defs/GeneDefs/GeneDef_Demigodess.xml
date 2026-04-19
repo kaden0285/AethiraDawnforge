@@ -128,7 +128,7 @@
     </statFactors>
     <customEffectDescriptions>
       <li>Learns 50% faster. Rests half as often as a mortal.</li>
-      <li>Divine pocket storage: carries 500 kg extra, in caravan and on person. Nothing rots or deteriorates while stored on her.</li>
+      <li>Divine pocket storage: +500 kg carrying capacity stacks with a +500 kg caravan bonus, giving her 1000 kg of extra mass in caravans and 500 kg extra on her person. Nothing rots or deteriorates while stored on her.</li>
       <li>Accumulates Divine Favor from 6 sources: daily passive (+5, or +10 with high colony mood), pilgrimages (+20), Day of Remembrance (+30), Guidance events (+3), friendly visitor departures (+2), hostile kills on her map (+1, cap 20/day). Max 100. Shrine doubles all gain.</li>
       <li>Favor scales all aura ranges and heal rate from 1x (empty) to 2x (full).</li>
       <li>Divine Blessing gizmo (100 favor): fully restores every colonist on the map - heals all injuries, diseases, and status effects, maxes all needs.</li>

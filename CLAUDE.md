@@ -78,7 +78,7 @@ Currently **28 patches** applied in `KurinDemigodessMod.ApplyHarmonyPatches`: Da
 - **No active abilities.** The user explicitly declined adding targeted active abilities. Everything is passive aura + gizmo-based. DO NOT add AbilityDefs without sign-off.
 - **Movement speed bonus is removed.** She moves at vanilla Kurin base speed. Do not add `MoveSpeed` offsets to her genes.
 - **Damage cap is 25% of max HP per hit** (was 40%). Set in `DamageCap_Patch.MaxDamagePercent`. Don't change without sign-off.
-- **Carrying capacity +500 kg** (was 300). Both on-pawn (`CarryingCapacity` statOffset on `DG_DivineGrace`) and in caravan (`CaravanCapacity_Patch`). Consistent across both. Was briefly raised to +1500 then reverted to +500 on user request.
+- **Carrying capacity +500 kg on-pawn, +1000 kg effective in caravan.** The `CarryingCapacity` statOffset on `DG_DivineGrace` adds +500 kg to her hauling limit. This also flows through `MassUtility.Capacity` for caravan math, and `CaravanCapacity_Patch` postfix adds another +500 kg on top when she's in a caravan. They STACK, so caravan capacity is effectively +1000 kg. Do not describe this as "500 kg" in user-facing text; the total in-caravan is 1000. Was briefly raised to 1500/1500 then reverted.
 - **Nothing rots or deteriorates in Aethira's inventory.** `InventoryPreservation_Patch` prefixes `CompRottable.CompTick`/`CompTickRare` and postfixes `SteadyEnvironmentEffects.FinalDeteriorationRate`. Walks `ParentHolder` up to 8 levels to detect Demigodess ownership (covers inventory, equipment, apparel, nested holders).
 
 ## Collaboration style

@@ -98,7 +98,7 @@ Five centuries of wisdom, grace of motion without end, and an immense divine poc
 [list]
 [*] Learns 50% faster
 [*] Rests half as often as a mortal
-[*] [b]Divine pocket storage: carries 500 kg beyond the normal limit[/b], consistent on her person and in caravans
+[*] [b]Divine pocket storage:[/b] +500 kg carrying capacity on her person, stacked with a +500 kg caravan bonus for a total of 1000 kg extra in caravans
 [*] [b]Nothing rots or deteriorates while stored on her.[/b] Meat, corpses, fresh medicine all frozen in time.
 [*] Ignores terrain-induced slowdown. Mud, snow, marsh, shallow water cost her no more than dirt.
 [/list]
