@@ -21,7 +21,7 @@ rem   - Invokes steamcmd to push the staging content to Workshop item
 rem     3707968015 (existing Aethira Dawnforge listing).
 rem ==================================================================
 
-set "STEAMCMD=C:\steamcmd\steamcmd.exe"
+set "STEAMCMD=C:\Users\kaden\Downloads\steamcmd\steamcmd.exe"
 set "PUBLISHED_FILE_ID=3707968015"
 set "APP_ID=294100"
 set "CHANGENOTE=Fix mid-save ascension loop: failsafe now spawns Aethira directly with a Divine Arrival letter when she has never existed in the save, instead of a 7-day ascension recovery for a pawn that never was. Docs updated."
