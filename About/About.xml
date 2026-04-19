@@ -78,6 +78,9 @@ She cannot be killed permanently. Seven independent failsafe layers:
 
 Her divine genes cannot be transferred to other pawns. Any attempt is rejected automatically.
 
+========== Starting a Game ==========
+Use either included scenario (Primitive or Tribal) for the intended narrative. If you add this mod to an existing save, or start without picking the scenario, the failsafe catches the gap within a minute and Aethira walks out of the wilderness with a "Divine Arrival" letter. Both paths are fully supported.
+
 ========== Dependencies ==========
 Required:
 1. Harmony

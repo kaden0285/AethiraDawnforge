@@ -501,7 +501,7 @@
     <tr><td>3. Corpse Protection</td><td>Fire, explosions, predators, hauling, mountain collapse</td><td>Corpse is indestructible, cannot be eaten, butchered, hauled, or despawned.</td></tr>
     <tr><td>4. Map Teardown Rescue</td><td>Map dispose / destruction</td><td>Body is extracted to another home map before the teardown completes.</td></tr>
     <tr><td>5. Anti-Removal</td><td>Kidnap, banishment, sale, gene transfer, faction change</td><td>All rejected by Harmony prefixes.</td></tr>
-    <tr><td>6. Emergency Respawn</td><td>60 in-game seconds missing from the world</td><td>Full Divine Ascension recovery, returns after 7 days (3.5 with shrine).</td></tr>
+    <tr><td>6. Emergency Respawn</td><td>60 in-game seconds missing from the world</td><td>If she was present in this save: full Divine Ascension recovery, returns after 7 days (3.5 with shrine). If she has <em>never</em> been in this save (player joined without the scenario, mod added mid-save): Welcome Spawn drops her directly onto the home map with a "Divine Arrival" letter and no ascension wait.</td></tr>
     <tr><td>7. Disk Snapshot</td><td>Every failsafe scan, per-save</td><td>Writes skills, relations, memories, work priorities, policies, titles to <code>&lt;Config&gt;/KurinDemigodess_PawnBackup_&lt;uuid&gt;.txt</code>.</td></tr>
   </tbody>
 </table>
@@ -556,6 +556,7 @@
   <li><strong>Ideology meme:</strong> Demigodess Worship. Anti-slavery, pro-charity, morally just, Divine Herald / Sacred Voice moral guide.</li>
   <li><strong>Preset ideology:</strong> The Dawnforge Covenant.</li>
   <li><strong>2 custom scenarios:</strong> The Celestial Fox (Primitive and Tribal tiers). Starts with Aethira and two Kurin followers. Opens with lore dialog about the fall of Aolara.</li>
+  <li><strong>Mid-save compatibility:</strong> adding this mod to an ongoing colony, or starting without the scenario, is fully supported. Within a minute of loading, the failsafe's Welcome Spawn path drops Aethira onto the home map with a "Divine Arrival" letter. No 7-day ascension wait for a pawn that was never there.</li>
   <li><strong>Buildable Divine Shrine.</strong></li>
   <li><strong>Full Kurin HAR race.</strong> Forked from Seioch's Kurin HAR Edition; fully included, do not run the original alongside.</li>
   <li><strong>Mod-wide appearance rules:</strong> no Kurin can have facial hair; Aethira specifically has auto-enforced snow white hair, straight ears, and jade green eyes.</li>
@@ -677,8 +678,8 @@
 
 <h3>Aethira did not appear at game start</h3>
 <ol>
-  <li>Confirm you started with one of the provided scenarios ("The Celestial Fox - Primitive" or "Tribal").</li>
-  <li>Open the dev console and search for <code>[KurinDemigodess] Harmony patches applied.</code> If that line is missing, the DLL failed to load. Usually means a prior mod broke the load order; see below.</li>
+  <li>Wait one in-game minute. If you did not start with one of the provided scenarios ("The Celestial Fox - Primitive" or "Tribal"), the failsafe's Welcome Spawn path will drop her onto the home map with a "Divine Arrival" letter. This is the intended behavior for mid-save additions and non-scenario starts.</li>
+  <li>If she still has not appeared: open the dev console and search for <code>[KurinDemigodess] Harmony patches applied.</code> If that line is missing, the DLL failed to load. Usually means a prior mod broke the load order; see below.</li>
   <li>Expected: <code>28 succeeded, 0 failed.</code></li>
 </ol>
 
