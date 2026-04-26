@@ -31,11 +31,11 @@
     <li>brrainz.harmony</li>
     <li>Ludeon.RimWorld.Biotech</li>
     <li>Ludeon.RimWorld.Ideology</li>
+    <li>Nals.FacialAnimation</li>
     <li>erdelf.HumanoidAlienRaces</li>
   </loadAfter>
   <loadBefore>
     <li>darkmiz.Kurin.FacialAnimation</li>
-    <li>Nals.FacialAnimation</li>
   </loadBefore>
   <incompatibleWith>
     <li>Dalrae.GaramRaceAddon</li>
