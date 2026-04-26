@@ -75,6 +75,110 @@ Let it learn.</text>
     </scenario>
   </ScenarioDef>
 
+  <!-- ==================== Medieval Tier (Vanilla Player Faction) ==================== -->
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>DG_DemigodessStart_Medieval</defName>
+    <label>The Celestial Fox - Medieval</label>
+    <description>A hundred years after the crash, Aethira Dawnforge has wandered half the continent gathering scattered Kurin survivors. She has remembered enough of the Republic's craft to teach steel and stone again. Now she walks with two oath-sworn followers onto fresh soil to plant the foundation of a keep.\n\nStart with Aethira Dawnforge and 2 Kurin followers. Pre-firearm tier. Pre-researched: Smithing, Complex Furniture, Stonecutting.\n\n(Tip: Pick the 'Demigodess Worship' preset ideology for the full experience. Pairs well with Medieval Overhaul or VFE Medieval 2 if you want a deeper medieval simulation, but works fine on vanilla. Aethira cannot truly die - she always comes back.)</description>
+    <scenario>
+      <summary>An immortal Kurin Demigodess and two oath-sworn followers found a keep. Steel, smithing, and stonework. Pre-firearm.</summary>
+      <playerFaction>
+        <factionDef>PlayerFaction</factionDef>
+      </playerFaction>
+      <parts>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>It has been a hundred years since the stolen ship fell from the sky.
+
+In that time Aethira Dawnforge has walked half the continent. She has knelt at the graves of Kurin she could not save, and she has carried home the ones she could. She has set broken bones and bound burned hands. She has remembered, slowly, what the Republic's smiths once knew. Hammer and bellows. Tongs and quench. Walls of cut stone. Roofs of milled timber. The patient craft that came before the glitterworld.
+
+Now she stands on fresh soil with two Kurin who have sworn their lives to her. They carry steel from her forge and oaths in their hearts. They will found a keep. They will train more smiths, more masons, more healers. They will build something the next siege cannot break.
+
+The Dawnforge does not promise them peace. She promises them that she will be there when the dark comes for them. As she always has.</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_KindDefs">
+          <def>ConfigurePawnsKindDefs</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <kindCounts>
+            <li>
+              <kindDef>DG_KurinDemigodess_Kind</kindDef>
+              <count>1</count>
+              <requiredAtStart>true</requiredAtStart>
+            </li>
+            <li>
+              <kindDef>Kurin_Colonist</kindDef>
+              <count>2</count>
+              <requiredAtStart>true</requiredAtStart>
+            </li>
+          </kindCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>500</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gold</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Steel</thingDef>
+          <count>250</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>WoodLog</thingDef>
+          <count>250</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Cloth</thingDef>
+          <count>100</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Pemmican</thingDef>
+          <count>80</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>30</count>
+        </li>
+
+        <!-- Medieval-tier pre-research: smithing for steel work, complex
+             furniture so the Divine Shrine is buildable, stonecutting so
+             walls can rise. Industrial research is intentionally left
+             locked - this is the keep-and-craft tier. -->
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>Smithing</project>
+        </li>
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>ComplexFurniture</project>
+        </li>
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>Stonecutting</project>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
   <!-- ==================== Neolithic Tier (Vanilla Tribe) ==================== -->
   <ScenarioDef ParentName="ScenarioBase">
     <defName>DG_DemigodessStart_Tribal</defName>

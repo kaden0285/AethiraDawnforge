@@ -119,7 +119,7 @@ Her presence is a pressure upon the world. She is the antithesis of a psycaster.
 [*] 2 custom traits: Demigodess Beauty + Eternal Wisdom
 [*] Ideology meme: Demigodess Worship (anti-slavery, pro-charity, morally just)
 [*] Preset ideology: The Dawnforge Covenant
-[*] 2 custom scenarios: The Celestial Fox (Primitive and Tribal)
+[*] 3 custom scenarios: The Celestial Fox (Primitive, Tribal, and Medieval)
 [*] Buildable Divine Shrine
 [*] Full Kurin HAR race included
 [*] Auto-enforced appearance: snow white hair, straight ears, jade green eyes (with Kurin Facial Animation installed)
@@ -127,7 +127,7 @@ Her presence is a pressure upon the world. She is the antithesis of a psycaster.
 [/list]
 
 [h2]Starting a Game[/h2]
-Use either included scenario (Primitive or Tribal) for the intended narrative experience.
+Use one of the three included scenarios (Primitive, Tribal, or Medieval) for the intended narrative experience.
 
 For non-scenario starts the default is now [b]Quest recruitment[/b]: Aethira begins as the NPC leader of [b]The Dawnforge Collective[/b], a friendly Kurin faction in the world. To bring her into your colony, complete a 3-step chain:
 [list]

@@ -24,7 +24,7 @@ rem ==================================================================
 set "STEAMCMD=C:\Users\kaden\Downloads\steamcmd\steamcmd.exe"
 set "PUBLISHED_FILE_ID=3707968015"
 set "APP_ID=294100"
-set "CHANGENOTE=Fix mid-save ascension loop: failsafe now spawns Aethira directly with a Divine Arrival letter when she has never existed in the save, instead of a 7-day ascension recovery for a pawn that never was. Docs updated."
+set "CHANGENOTE=Quest recruitment system + Medieval scenario. Kurin Republic renamed to The Dawnforge Collective. New default for non-scenario starts: Aethira leads the Collective as an NPC and the player recruits her via a 3-step goodwill chain (Whispers 50, Trial 80, Calling 100 + Divine Shrine). Auto-spawn (legacy) and Disabled modes remain available in mod settings. New 'The Celestial Fox - Medieval' scenario: pre-firearm tier, pre-researched Smithing/Complex Furniture/Stonecutting, founds a keep. Auto-leader gate: she no longer seizes the leader role of unrelated player ideologies (only Demigodess Worship). Settings menu now scrolls so the bottom checkboxes are reachable on small screens. Terrain immunity now patches both 2-arg and 3-arg CostToMoveIntoCell overloads. Patch count is now 34."
 
 set "SCRIPT_DIR=%~dp0"
 pushd "%SCRIPT_DIR%.."
