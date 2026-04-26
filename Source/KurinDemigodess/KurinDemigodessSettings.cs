@@ -99,10 +99,21 @@ namespace KurinDemigodess
             return "Kurin Demigodess";
         }
 
+        // Scroll state for the settings window. The full menu has ~14 controls
+        // plus headers and overflows the default settings rect on smaller
+        // resolutions, hiding the bottom checkboxes (Day of Remembrance,
+        // Aethira's Guidance, etc). Wrapping in a scroll view keeps every
+        // option reachable at any window height.
+        private Vector2 settingsScrollPos = Vector2.zero;
+        private const float SettingsContentHeight = 900f;
+
         public override void DoSettingsWindowContents(Rect inRect)
         {
+            var viewRect = new Rect(0f, 0f, inRect.width - 16f, SettingsContentHeight);
+            Widgets.BeginScrollView(inRect, ref settingsScrollPos, viewRect);
+
             var list = new Listing_Standard();
-            list.Begin(inRect);
+            list.Begin(viewRect);
 
             list.Label("Failsafe");
             list.GapLine(4f);
@@ -171,6 +182,7 @@ namespace KurinDemigodess
                 "Once per in-game year, a colony-wide mood buff + letter celebrating Aethira's role.");
 
             list.End();
+            Widgets.EndScrollView();
         }
 
         private void ApplyHarmonyPatches()
