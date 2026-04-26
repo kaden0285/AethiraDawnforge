@@ -4,6 +4,38 @@ using Verse;
 namespace KurinDemigodess
 {
     /// <summary>
+    /// How Aethira enters the player's colony when they didn't pick a Dawnforge
+    /// scenario. Scenario starts always place her at tick 0 regardless of this
+    /// setting; this only governs non-scenario starts and existing-save adoption.
+    /// </summary>
+    public enum RecruitmentMode
+    {
+        /// <summary>
+        /// (Default for non-scenario starts.) Aethira is the leader of the
+        /// Dawnforge Collective, an NPC faction in the world. The player must
+        /// complete a 3-step quest chain (or use the Petition the Collective
+        /// comms-console option) to recruit her. This is the canonical post-1.6
+        /// experience.
+        /// </summary>
+        Quest = 0,
+
+        /// <summary>
+        /// Legacy behavior: ~60 seconds after game start the failsafe
+        /// "Welcome Spawns" Aethira out of the wilderness directly into the
+        /// player's colony with a Divine Arrival letter, no quest required.
+        /// </summary>
+        AutoSpawn = 1,
+
+        /// <summary>
+        /// Off. The mod will never auto-spawn Aethira into the player's colony
+        /// or seed her as a Dawnforge Collective leader. The player must use
+        /// one of the included scenarios. The failsafe still protects her if
+        /// she's already present, it just won't conjure her from nothing.
+        /// </summary>
+        Disabled = 2,
+    }
+
+    /// <summary>
     /// Mod settings data class. Values default to the hard-coded behavior
     /// from the mod's original design. Users can tune them in the mod options menu.
     /// </summary>
@@ -20,6 +52,9 @@ namespace KurinDemigodess
         // ===== Gene enforcement =====
         public int normalEnforceInterval = 600;    // Cheap checks: food, regen, tend, psylink, purge status
         public int heavyEnforceInterval = 7500;    // Expensive checks: identity, genes, traits, passions
+
+        // ===== Recruitment =====
+        public RecruitmentMode recruitmentMode = RecruitmentMode.Quest;
 
         // ===== Lore/fun features =====
         public bool divineFavorEnabled = true;
@@ -41,6 +76,7 @@ namespace KurinDemigodess
             Scribe_Values.Look(ref ascensionDurationDays, "ascensionDurationDays", 7);
             Scribe_Values.Look(ref normalEnforceInterval, "normalEnforceInterval", 600);
             Scribe_Values.Look(ref heavyEnforceInterval, "heavyEnforceInterval", 7500);
+            Scribe_Values.Look(ref recruitmentMode, "recruitmentMode", RecruitmentMode.Quest);
             Scribe_Values.Look(ref divineFavorEnabled, "divineFavorEnabled", true);
             Scribe_Values.Look(ref deathRecoilEnabled, "deathRecoilEnabled", true);
             Scribe_Values.Look(ref deathRecoilRadius, "deathRecoilRadius", 12f);
@@ -105,7 +141,7 @@ namespace KurinDemigodess
         // Aethira's Guidance, etc). Wrapping in a scroll view keeps every
         // option reachable at any window height.
         private Vector2 settingsScrollPos = Vector2.zero;
-        private const float SettingsContentHeight = 900f;
+        private const float SettingsContentHeight = 1100f;
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
@@ -129,6 +165,33 @@ namespace KurinDemigodess
 
             list.CheckboxLabeled("Write failsafe log file", ref Settings.enableFailsafeLog,
                 "Appends events to KurinDemigodess_FailsafeLog.txt in the RimWorld config folder. Rotates at 200KB.");
+
+            list.Gap(12f);
+            list.Label("Recruitment (non-scenario starts)");
+            list.GapLine(4f);
+
+            list.Label("How Aethira enters the colony if you didn't pick a Dawnforge scenario:");
+
+            if (list.RadioButton("Quest (default) - she leads the Dawnforge Collective; recruit via 3-step quest chain or Petition the Collective comms option",
+                Settings.recruitmentMode == RecruitmentMode.Quest, 0f,
+                "She is the NPC leader of the Dawnforge Collective faction. Complete the quest chain (Sanctuary -> Trial -> Calling) to bring her to your colony. As an alternative, the comms console can Petition the Collective for a steep silver/goodwill cost."))
+            {
+                Settings.recruitmentMode = RecruitmentMode.Quest;
+            }
+
+            if (list.RadioButton("Auto-spawn (legacy) - she walks out of the wilderness 60 seconds after game start",
+                Settings.recruitmentMode == RecruitmentMode.AutoSpawn, 0f,
+                "Old behavior: the failsafe Welcome-Spawns Aethira directly into your colony with a Divine Arrival letter, no quest required."))
+            {
+                Settings.recruitmentMode = RecruitmentMode.AutoSpawn;
+            }
+
+            if (list.RadioButton("Disabled - she is never auto-spawned; only the included scenarios place her",
+                Settings.recruitmentMode == RecruitmentMode.Disabled, 0f,
+                "The mod will not seed her into any faction or colony. The failsafe still protects her if she's already present, it just won't conjure her from nothing. For players who want only the scenario experience."))
+            {
+                Settings.recruitmentMode = RecruitmentMode.Disabled;
+            }
 
             list.Gap(12f);
             list.Label("Ascension");

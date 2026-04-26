@@ -256,6 +256,7 @@
   <a href="#shrine">Shrine</a>
   <a href="#immortality">Immortality</a>
   <a href="#events">Events</a>
+  <a href="#recruitment">Recruitment</a>
   <a href="#settings">Settings</a>
   <a href="#deps">Dependencies</a>
   <a href="#compat">Compat</a>
@@ -563,6 +564,26 @@
 </ul>
 </section>
 
+<section id="recruitment">
+<h2>Recruitment (non-scenario starts)</h2>
+<p>If you choose one of the included Dawnforge scenarios, Aethira is in your colony from tick 0 and you can skip this section. For every other kind of start (custom scenario, mod added mid-save, etc.) the mod has a Recruitment Mode setting with three options:</p>
+
+<h3>Quest <span class="gene-tag">default</span></h3>
+<p>Aethira is the NPC leader of <strong>The Dawnforge Collective</strong>, a friendly Kurin faction in the world. To bring her into your colony, complete a 3-step recruitment chain gated by goodwill with the Collective:</p>
+<ol>
+  <li><strong>The Whispers</strong> - opens around day 3. Reach <strong>50 goodwill</strong> with the Collective via trade and gifts to advance.</li>
+  <li><strong>The Trial</strong> - reach <strong>80 goodwill</strong>. The Speaker accepts your colony as Kin.</li>
+  <li><strong>The Calling</strong> - reach <strong>100 goodwill</strong> AND have a Divine Shrine on a home map. She walks out of the wilderness with a "Divine Arrival" letter and joins permanently. The shrine requirement is the "buy-in" step: it makes the recruitment commitment material, not just political.</li>
+</ol>
+<p>The goodwill chain doubles as the "buy her loyalty" path: silver gifts and trade caravans raise goodwill cleanly. There is no shortcut button - you have to actually invest in the relationship the way you would any other faction quest in vanilla. Stage messages fire once each, scribed across save/load.</p>
+
+<h3>Auto-spawn <span class="gene-tag">legacy</span></h3>
+<p>The pre-quest behavior. About 60 seconds after game start the failsafe Welcome-Spawns Aethira out of the wilderness with no quest required. Use this if you want the old "she just shows up" experience.</p>
+
+<h3>Disabled</h3>
+<p>The mod will never auto-spawn or auto-seed Aethira. The failsafe still keeps her alive if she's already in the colony - it just won't conjure her from nothing. Use this if you only want her on the included scenario starts.</p>
+</section>
+
 <section id="settings">
 <h2>Mod Settings</h2>
 <p>Open the Mod Options menu in RimWorld and find "Kurin, The Celestial Fox - Aethira Dawnforge". Configurable:</p>
@@ -570,6 +591,7 @@
   <li>Failsafe scan interval (default 1200 ticks = 20 seconds)</li>
   <li>Failsafe miss threshold (default 3, so total trigger time is 60 in-game seconds)</li>
   <li>Write failsafe log file on/off (KurinDemigodess_FailsafeLog.txt in the config folder)</li>
+  <li><strong>Recruitment Mode</strong> - Quest (default) / Auto-spawn (legacy) / Disabled (off). See the Recruitment section above.</li>
   <li>Ascension duration in days (default 7, halved by shrine)</li>
   <li>Normal gene enforcement interval (default 600 ticks = 10 seconds)</li>
   <li>Heavy gene enforcement interval (default 7500 ticks = 125 seconds)</li>
@@ -679,8 +701,10 @@
 
 <h3>Aethira did not appear at game start</h3>
 <ol>
-  <li>Wait one in-game minute. If you did not start with one of the provided scenarios ("The Celestial Fox - Primitive" or "Tribal"), the failsafe's Welcome Spawn path will drop her onto the home map with a "Divine Arrival" letter. This is the intended behavior for mid-save additions and non-scenario starts.</li>
-  <li>If she still has not appeared: open the dev console and search for <code>[KurinDemigodess] Harmony patches applied.</code> If that line is missing, the DLL failed to load. Usually means a prior mod broke the load order; see below.</li>
+  <li>Check Recruitment Mode. The new default for non-scenario starts is <strong>Quest</strong>: she lives with the Dawnforge Collective and you have to recruit her via the 3-step goodwill chain. See the <a href="#recruitment">Recruitment</a> section. If you wanted the legacy "she just walks in" behavior, switch the setting to <strong>Auto-spawn</strong>.</li>
+  <li>Auto-spawn mode: wait one in-game minute. The failsafe's Welcome Spawn path will drop her onto the home map with a "Divine Arrival" letter.</li>
+  <li>Quest mode: open the Factions tab. The Dawnforge Collective should be present and Aethira Dawnforge should be its Speaker. If the faction is missing, your world pre-dates this mod; start a new world or switch the mode to Auto-spawn.</li>
+  <li>If she still has not appeared after either path: open the dev console and search for <code>[KurinDemigodess] Harmony patches applied.</code> If that line is missing, the DLL failed to load. Usually means a prior mod broke the load order; see below.</li>
   <li>Expected: <code>34 succeeded, 0 failed.</code></li>
 </ol>
 

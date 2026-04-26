@@ -273,6 +273,26 @@ namespace KurinDemigodess
             }
         }
 
+        // Set on the first tick after world load. Triggers a one-shot Quest-mode
+        // seeding pass for the Dawnforge Collective leader. Not Scribed: we always
+        // re-evaluate after a save/load in case the player toggled RecruitmentMode
+        // or the seeded pawn was destroyed by another mod.
+        private bool seededThisSession;
+
+        /// <summary>
+        /// Called by DawnforgeFactionSeeder after it generates Aethira into the
+        /// Dawnforge Collective. Hands the canonical pawn reference to the
+        /// failsafe so subsequent scans recognize her as the registered
+        /// Demigodess and gene-transfer protections work correctly.
+        /// </summary>
+        public void RegisterSeededDemigodess(Pawn pawn)
+        {
+            if (pawn == null) return;
+            savedDemigodess = pawn;
+            hasEverHadDemigodess = true;
+            consecutiveMissCount = 0;
+        }
+
         public override void WorldComponentTick()
         {
             base.WorldComponentTick();
@@ -281,6 +301,21 @@ namespace KurinDemigodess
             if (string.IsNullOrEmpty(worldUuid))
             {
                 worldUuid = System.Guid.NewGuid().ToString("N");
+            }
+
+            // Quest-mode seeding pass. Once per world-load. Idempotent: bails when
+            // Aethira already exists or when RecruitmentMode is not Quest.
+            if (!seededThisSession)
+            {
+                seededThisSession = true;
+                try
+                {
+                    DawnforgeFactionSeeder.EnsureSeeded(this);
+                }
+                catch (Exception ex)
+                {
+                    Log.Warning("[KurinDemigodess] DawnforgeFactionSeeder.EnsureSeeded threw: " + ex.Message);
+                }
             }
 
             // Single unified scan every failsafeScanInterval ticks (Tier 1 #3: merged from 4 separate loops)
@@ -663,12 +698,34 @@ namespace KurinDemigodess
             // Never-had-her case: player joined without the Aethira scenario, or the
             // mod was added mid-save. Don't route her through ascension, that would
             // start a 7-day "her body dissolves" loop for a pawn that never existed.
-            // Spawn her directly on the home map with a gentle arrival letter.
+            // What happens next depends on the recruitment mode setting.
             if (!hasEverHadDemigodess && (savedDemigodess == null || savedDemigodess.Destroyed))
             {
-                LogFailsafe("Emergency respawn: never had Aethira in this save - routing to WelcomeSpawn.");
-                WelcomeSpawn(homeMap);
-                return;
+                var mode = KurinDemigodessMod.Settings.recruitmentMode;
+                switch (mode)
+                {
+                    case RecruitmentMode.AutoSpawn:
+                        LogFailsafe("Emergency respawn (never-had): RecruitmentMode=AutoSpawn, routing to WelcomeSpawn.");
+                        WelcomeSpawn(homeMap);
+                        return;
+
+                    case RecruitmentMode.Quest:
+                        // Quest mode: she should already be seeded as the Dawnforge Collective leader by
+                        // DawnforgeFactionSeeder.EnsureSeeded(). The failsafe shouldn't conjure her into
+                        // the player colony; the player has to recruit her via the quest chain. Just stop
+                        // pinging the threshold so we don't spam the log every 60 seconds.
+                        LogFailsafe("Emergency respawn (never-had): RecruitmentMode=Quest, declining to spawn. Player must complete the recruitment quest.");
+                        DawnforgeFactionSeeder.EnsureSeeded(this);
+                        consecutiveMissCount = 0;
+                        return;
+
+                    case RecruitmentMode.Disabled:
+                        // Player explicitly turned off auto-spawning. Don't conjure her, don't seed her.
+                        // She only exists if the scenario placed her or the player adds her via dev mode.
+                        LogFailsafe("Emergency respawn (never-had): RecruitmentMode=Disabled, no spawn. Reset miss counter to silence the failsafe.");
+                        consecutiveMissCount = 0;
+                        return;
+                }
             }
 
             try

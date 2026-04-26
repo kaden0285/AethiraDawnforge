@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
-  <!-- Force Kurin Republic faction to use Demigodess Worship meme -->
+  <!-- Force the Dawnforge Collective faction to use Demigodess Worship meme -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/FactionDef[defName="Kurin_Faction"]</xpath>
     <value>

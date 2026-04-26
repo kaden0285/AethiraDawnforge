@@ -54,8 +54,8 @@
 
   <FactionDef ParentName="FactionBase">
     <defName>Kurin_Faction</defName>
-    <label>Republic of Kurin</label>
-    <description>These are the forces of the Kurins who crashed decades ago.\nThere have been many incidents, but now they have enough power to protect their own people.</description>
+    <label>The Dawnforge Collective</label>
+    <description>The faithful of Aethira Dawnforge. Survivors of the siege at Aolara who fled to the stars and rebuilt under the Demigodess's protection. They follow her teachings of charity, healing, and the rejection of slavery, and they answer to her alone.</description>
     <colorSpectrum>
       <li>(1.0, 0.72, 0.27)</li>
     </colorSpectrum>
@@ -70,7 +70,7 @@
     <canMakeRandomly>true</canMakeRandomly>
     <canSiege>false</canSiege>
     <canStageAttacks>true</canStageAttacks>
-    <leaderTitle>President</leaderTitle>
+    <leaderTitle>Dawnforge Speaker</leaderTitle>
     <factionIconPath>Kurin/Faction/TextureNew</factionIconPath>
     <factionNameMaker>NamerFactionOutlander</factionNameMaker>
     <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
